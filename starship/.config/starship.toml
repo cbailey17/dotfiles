@@ -1,0 +1,83 @@
+# prezto.toml
+add_newline = false
+
+# A minimal left prompt
+format = """$python$directory$character"""
+
+# move the rest of the prompt to the right
+right_format = """$status$all"""
+
+palette = 'tokyo'
+
+[palettes.tokyo]
+color_blue = '#65D1FF'
+color_green = '#3EFFDC'
+color_violet = '#FF61EF'
+color_yellow = '#FFDA7B'
+color_red = '#FF4A4A'
+lightblue = '#4fd6be'
+lightgrey = 'a9b1d6'
+
+[character]
+success_symbol = "[❯](lightblue)[❯](color_violet)[❯](lightgrey)"
+error_symbol = "[❯](lightblue)[❯](color_violet)[❯](lightgrey)"
+vicmd_symbol = "[❮](lightgrey)[❮](color_violet)[❮](lightblue)"
+
+[git_branch]
+format = '[$branch]($style) '
+style = 'bold green'
+
+[python]
+format = '\($virtualenv\) [$symbol]($style)( $version) '
+symbol = " "
+style = "italic bright-yellow"
+
+[git_status]
+format = '$all_status$ahead_behind '
+ahead = '[⬆](bold purple) '
+behind = '[⬇](bold purple) '
+staged = '[✚](green) '
+deleted = '[✖](red) '
+renamed = '[➜](purple) '
+stashed = '[✭](cyan) '
+untracked = '[◼](white) '
+modified = '[✱](blue) '
+conflicted = '[═](yellow) '
+diverged = '⇕ '
+up_to_date = ''
+
+[directory]
+style = "blue"
+truncation_length = 1
+truncation_symbol = ""
+fish_style_pwd_dir_length = 1
+read_only = " 󰌾"
+
+[directory.substitutions]
+"Documents" = "󰈙  "
+"Downloads" = "  "
+"Music" = "  "
+"Pictures" = "  "
+"acbailey" = " "
+"abailey" = "  "
+
+"Developer" = "󰲋  "
+
+[cmd_duration]
+format = '[$duration]($style) '
+
+[line_break]
+disabled = true
+
+[status]
+disabled = false
+symbol = '✘ '
+
+[os]
+style = "bold blue"
+disabled = false
+
+[os.symbols]
+Windows = " "
+Arch = " "
+Debian = "on  "

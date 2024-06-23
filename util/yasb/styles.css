@@ -1,0 +1,154 @@
+* {
+  /* Bar measurement icons: https://github.com/and3rson/graph-bars-font */
+  /* Icon set: https://fontawesome.com/v5.15/how-to-use/on-the-desktop/setup/getting-started */
+  font-family: "JetBrains Mono, Noto Sans Mono, Noto Color Emoji";
+  font-size: 14px;
+  color: #f2e5bc;
+}
+
+.bar {
+  background: rgba(29, 32, 33, 0.3);
+  border: 1px solid #504945;
+  padding: 0 5px;
+  margin: 0 25px;
+  border-radius: 5px;
+}
+
+.container-right .widget {
+  margin: 4px;
+  border-radius: 5px;
+}
+
+.container-right .widget * {
+  color: #242424;
+}
+.komorebi-workspaces {
+  margin-left: 0;
+}
+.ws-btn {
+  padding: 5px;
+  background: #414868; 
+  border: 1px solid rgba(168, 153, 132, 0.4);
+  margin: 2px 4px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+.ws-btn:hover {
+  color: #fbf1c7;
+  font-weight: bold;
+}
+
+.ws-btn.populated {
+  border-color: rgba(168, 153, 132, 1.0);
+  color: #ebdbb2;
+}
+
+.ws-btn.active {
+  background: #bb9af7; 
+  color: #121212;
+}
+
+.custom-widget {
+  padding: 2px 6px;
+  font-size: 14px;
+  background: #7aa2f7;
+}
+.custom-widget .icon {
+  font-size: 13px;
+}
+.custom-widget:hover {
+  background: #fbf1c7;
+}
+.custom-widget .icon.icon-left {
+  margin-right: 5px;
+}
+.custom-widget .icon.icon-right {
+  margin-left: 5px;
+}
+.custom-widget.hostname-widget {
+  background: #83a598;
+}
+
+.custom-widget.terminal-widget {
+  font-size: 14px;
+}
+
+.cpu-widget .label,
+.wifi-widget .label,
+.memory-widget .label,
+.traffic-widget .label,
+.battery-widget .label {
+  padding: 2px 5px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.traffic-widget .label {
+  background: #B3D3D9;
+}
+
+.wifi-widget .label {
+  background: #FF61EF;
+}
+
+.cpu-widget .label {
+  background: #65D1FF;
+}
+
+.battery-widget .label.status-critical {
+  background: #fb4934;
+}
+.battery-widget .label.status-low {
+  background: #fe8019;
+}
+.battery-widget .label.status-medium {
+  background: #fabd2f;
+}
+.battery-widget .label.status-high {
+  background: #3EFFDC;
+}
+.battery-widget .label.status-full {
+  background: #3EFFDC;
+}
+.battery-widget .label.status-charging {
+  background: #3EFFDC;
+}
+.battery-widget,
+.memory-widget {
+  margin: 0;
+}
+
+.memory-widget .label.status-low {
+  background: #FF4A4A;
+}
+.memory-widget .label.status-medium {
+  background: #ff9e64;
+}
+.memory-widget .label.status-high {
+  background: #3EFFDC;
+}
+.active-window-widget {
+  margin-left: 5px;
+}
+.active-window-widget .label {
+  padding: -5px 7px 0 7px;
+  color: #242424;
+  background: #83a598;
+  margin-bottom: -1px;
+  border-radius: 3px;
+  margin: 2px;
+}
+
+.komorebi-active-layout .label {
+  color: #fbf1c7;
+  margin: -4px 2px 2px 8px;
+  font-family: Hack;
+}
+
+
+@media only screen and (max-width: 2000px) {
+  .bar {
+    margin: 0 35px;
+  }
+}
