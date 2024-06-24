@@ -265,10 +265,10 @@ disabled = false
 
 [os.symbols]
 Arch = "   "
-Debian = "on  "
+Debian = "   "
 
 [python]
-format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
+format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
 # format = '\($virtualenv\) [$symbol]($style)( $version) '
 symbol = " "
 style = "italic bright-yellow"
@@ -278,13 +278,13 @@ success_symbol = '[➜](bold green)'
 error_symbol = "[✖](bold red) "
 
 [terraform]
-format = '\[[$symbol$workspace]($style)\]'
+format = '[$symbol$workspace]($style)'
 
 [sudo]
 format = '\[[as $symbol]\]'
 
 [rust]
-format = '\[[$symbol($version)]($style)\]'
+format = '[$symbol($version)]($style)'
 style = "bold green"
 
 [java]

@@ -1,27 +1,34 @@
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { 
+    "nvim-tree/nvim-web-devicons",
+    { "abeldekat/harpoonline", version = "*" },
+  },
   -- opts = function(_, opts)
-  --     local trouble = require("trouble")
-  --     local symbols = trouble.statusline({
-  --         mode = "lsp_document_symbols",
-  --         groups = {},
-  --         title = false,
-  --         filter = { range = true },
-  --         format = "{kind_icon}{symbol.name:Normal}",
-  --         -- The following line is needed to fix the background color
-  --         -- Set it to the lualine section you want to use
-  --         hl_group = "lualine_c_normal",
-  --     })
-  --     table.insert(opts.sections.lualine_c, {
-  --         symbols.get,
-  --         cond = symbols.has,
-  --     })
+  --   local trouble = require("trouble")
+  --   local symbols = trouble.statusline({
+  --     mode = "lsp_document_symbols",
+  --     groups = {},
+  --     title = false,
+  --     filter = { range = true },
+  --     format = "{kind_icon}{symbol.name:Normal}",
+  --     -- The following line is needed to fix the background color
+  --     -- Set it to the lualine section you want to use
+  --     hl_group = "lualine_c_normal",
+  --   })
+  --   table.insert(opts.sections.lualine_c, {
+  --     symbols.get,
+  --     cond = symbols.has,
+  --   })
   -- end,
-
+  --
   config = function()
     local lualine = require("lualine")
     local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+    local Harpoonline = require("harpoonline")
+    Harpoonline.setup({
+      on_update = function() require("lualine").refresh() end,
+    })
 
     local colors = {
       blue = "#65D1FF",
@@ -33,21 +40,6 @@ return {
       bg = "#112638",
       inactive_bg = "#2c3043",
     }
-
-    local function lsp_progress()
-      local messages = vim.lsp.util.get_progress_messages()
-      if #messages == 0 then
-        return
-      end
-      local status = {}
-      for _, msg in pairs(messages) do
-        table.insert(status, (msg.percentage or 0) .. "%% " .. (msg.title or ""))
-      end
-      local spinners = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-      local ms = vim.loop.hrtime() / 1000000
-      local frame = math.floor(ms / 120) % #spinners
-      return table.concat(status, " | ") .. " " .. spinners[frame + 1]
-    end
 
     local my_lualine_theme = {
       normal = {
@@ -90,6 +82,7 @@ return {
       sections = {
         lualine_c = {
           {
+            Harpoonline.format,
             "filename",
             symbols = {
               modified = "●",

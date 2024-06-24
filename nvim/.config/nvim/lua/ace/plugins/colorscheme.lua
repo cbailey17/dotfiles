@@ -17,9 +17,12 @@ return {
     require("tokyonight").setup({
       style = "night",
       transparent = transparent,
+      terminal_colors = true,
       styles = {
         sidebars = transparent and "transparent" or "dark",
         floats = transparent and "transparent" or "dark",
+        comments = { fg = "#627E97", italic = true },
+        keywords = { italic = true },
       },
       on_colors = function(colors)
         colors.bg = bg
