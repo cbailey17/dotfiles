@@ -53,7 +53,6 @@ return {
           node_decremental = "grm" -- decrement to the previous node
         }
       },
-      
       textobjects = {
         -- syntax-aware textobjects
         enable = enable,
