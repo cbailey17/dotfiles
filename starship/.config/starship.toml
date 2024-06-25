@@ -80,7 +80,6 @@ $sudo\
 $cmd_duration\
 $line_break\
 $jobs\
-$battery\
 $time\
 $status\
 $container\
@@ -91,6 +90,9 @@ $shell\
 # [┌───────────────────>](bold green)
 # [│](bold green)$directory$package$battery
 # [└─>](bold green) """
+
+
+right_format = """$battery"""
 
 
 ################################################################################

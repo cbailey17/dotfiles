@@ -91,6 +91,7 @@ source <(fzf --zsh)
 # set up syntax highlighting
 source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
+export OPENAI_API_KEY=sk-proj-IJ170AwolhaSi1N6uMzRT3BlbkFJWWGj6DvBBQi5JTSGHGCW
 export PATH="$PATH:/usr/local/bin:/usr/bin:/opt/nvim-linux64/bin/nvim"
 export PATH="/opt/nvim-linux64/bin/nvim:$PATH:/opt/nvim-linux64/bin"
 # Set GOPATH
