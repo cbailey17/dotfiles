@@ -1,13 +1,13 @@
 return {
-  {
-    'mrded/nvim-lsp-notify',
-    requires = { 'rcarriga/nvim-notify' },
-    config = function()
-      require('lsp-notify').setup({
-        notify = require('notify'),
-      })
-    end
-  },
+  -- {
+    -- 'mrded/nvim-lsp-notify',
+    -- requires = { 'rcarriga/nvim-notify' },
+    -- config = function()
+    --   require('lsp-notify').setup({
+    --     notify = require('notify'),
+    --   })
+    -- end
+  -- },
   {
     "williamboman/mason.nvim",
     dependencies = {
@@ -73,6 +73,7 @@ return {
       }
 
       lspconfig.gopls.setup({})
+      lspconfig.tsserver.setup({})
       lspconfig.lua_ls.setup({})
       lspconfig.pyright.setup({})
       lspconfig.ruff_lsp.setup({})
