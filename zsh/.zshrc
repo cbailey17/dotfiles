@@ -18,7 +18,7 @@ source /home/acbailey/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplet
 # User configuration for bash history
 HISTFILE=~/.zsh_histfile
 HISTSIZE=1000
-SAVEHIST=1000
+SAVEHIST=2000
 HIST_IGNORE_ALL_DUPS=true
 setopt appendhistory
 
