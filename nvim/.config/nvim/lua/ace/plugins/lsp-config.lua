@@ -50,6 +50,7 @@ return {
       local lspconfig = require("lspconfig")
       local cmp_nvim_lsp = require("cmp_nvim_lsp")
       local keymap = vim.keymap.set
+      require('lspconfig.ui.windows').default_options.border = 'single'
 
       local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
       for type, icon in pairs(signs) do
@@ -72,6 +73,7 @@ return {
         ["gopls"] = true,
       }
 
+      -- Configure language servers
       lspconfig.gopls.setup({})
       lspconfig.lua_ls.setup({})
       lspconfig.pyright.setup({})
