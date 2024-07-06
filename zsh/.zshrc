@@ -69,7 +69,9 @@ alias llt="eza -l --icons --tree --git-ignore"
 alias fd="fdfind"
 alias cat="bat"
 alias v="nvim ."
+alias fz='fzf --preview="bat --style=numbers --color=always --line-range=:500 {}" --bind "enter:execute(nvim {} < /dev/tty)"'
 
+export FZF_DEFAULT_COMMAND="rg --files --hidden -g '!.config/' -g '!.mozilla' -g '!.local/' -g '!.virtualenvs' -g '!go/' -g '!.cache', -g '!dotfiles/.git', -g '!.zcomp*', -g '!node_modules' -g '!.cache'"
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
 --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
@@ -94,10 +96,13 @@ source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 export OPENAI_API_KEY=sk-proj-IJ170AwolhaSi1N6uMzRT3BlbkFJWWGj6DvBBQi5JTSGHGCW
 export PATH="$PATH:/usr/local/bin:/usr/bin:/opt/nvim-linux64/bin/nvim"
 export PATH="/opt/nvim-linux64/bin/nvim:$PATH:/opt/nvim-linux64/bin"
+ 
 # Set GOPATH
-export GOPATH=$HOME/go
+export GOPATH=$HOME/Developer/go
 # Add GOPATH/bin to PATH
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
+
+export MARKETDATA_TOKEN="RDV0U3FPM2tBcWJIQlhjQThSd0NoWjY1Y1JrSHdhbUU4LWZXZ0NTWWF2bz0"
 
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
