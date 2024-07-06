@@ -1,20 +1,11 @@
 return {
-  -- {
-    -- 'mrded/nvim-lsp-notify',
-    -- requires = { 'rcarriga/nvim-notify' },
-    -- config = function()
-    --   require('lsp-notify').setup({
-    --     notify = require('notify'),
-    --   })
-    -- end
-  -- },
-  {
+ {
     "williamboman/mason.nvim",
     dependencies = {
-      "j-hui/fidget.nvim",
+      -- "j-hui/fidget.nvim",
     },
     config = function()
-      require("fidget").setup({})
+      -- require("fidget").setup({})
       require("mason").setup({
         ui = {
           icons = {
@@ -34,6 +25,7 @@ return {
           "lua_ls",
           "pyright",
           "jdtls",
+          "gopls",
         }
       })
     end

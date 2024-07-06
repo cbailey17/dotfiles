@@ -6,6 +6,7 @@ vim.keymap.set('n', '<leader>dbcl', '<cmd>lua require("mongo-nvim.telescope.pick
 vim.keymap.set('n', '<leader>dbdl', '<cmd>lua require("mongo-nvim.telescope.pickers").document_picker("examples", "movies")<CR>', { noremap = true, silent = true })
 
 local keymap = vim.keymap -- for conciseness
+local opts = { noremap = true, silent = true }
 
 -- map save to leader wd to write docs
 keymap.set({"n", "v"}, "<leader>wd", ":w<CR>", { desc = "Write document" })
@@ -29,13 +30,15 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
--- Yank into system clipboard
+-- Yank and paste into system clipboard
 keymap.set({"n", "v"}, "<leader>y", [["+y]]);
+keymap.set({"n", "v"}, "<leader>p", [["+p]]);
+keymap.set({'n', 'v'}, ';', ':', opts)
 
 -- Buffer management 
-keymap.set("n", "<leader>n", ":bn<cr>")
-keymap.set("n", "<leader>p", ":bp<cr>")
-keymap.set("n", "<leader>x", ":bd<cr>")
+keymap.set("n", "<leader><leader>n", ":bn<cr>")
+keymap.set("n", "<leader><leader>p", ":bp<cr>")
+keymap.set("n", "<leader><leader>x", ":bd<cr>")
 
 -- Undo tree
 vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)

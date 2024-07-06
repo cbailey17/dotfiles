@@ -1,32 +1,14 @@
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = { 
+  dependencies = {
     "nvim-tree/nvim-web-devicons",
     { "abeldekat/harpoonline", version = "*" },
   },
-  opts = function(_, opts)
-    local trouble = require("trouble")
-    local symbols = trouble.statusline({
-      mode = "lsp_document_symbols",
-      groups = {},
-      title = false,
-      filter = { range = true },
-      format = "{kind_icon}{symbol.name:Normal}",
-      -- The following line is needed to fix the background color
-      -- Set it to the lualine section you want to use
-      hl_group = "lualine_c_normal",
-    })
-    table.insert(opts.sections.lualine_c, {
-      symbols.get,
-      cond = symbols.has,
-    })
-  end,
-
   config = function()
-    local lualine = require("lualine")
     local lazy_status = require("lazy.status") -- to configure lazy pending updates count
-    local Harpoonline = require("harpoonline")
 
+    -- Harpoon integration
+    local Harpoonline = require("harpoonline")
     Harpoonline.setup({
       on_update = function() require("lualine").refresh() end,
     })
@@ -42,7 +24,8 @@ return {
       inactive_bg = "#2c3043",
     }
 
-    local my_lualine_theme = {
+    -- Custom theme with colors borrowed from https://github.com/josean-dev
+    local custom_bubbles_theme = {
       normal = {
         a = { bg = colors.blue, fg = colors.bg, gui = "bold" },
         b = { bg = colors.bg, fg = colors.fg },
@@ -75,34 +58,49 @@ return {
       },
     }
 
-    -- configure lualine with modified theme
-    lualine.setup({
+    -- Set up lualine sections
+    require('lualine').setup {
       options = {
-        theme = my_lualine_theme,
+        theme = custom_bubbles_theme,
+        component_separators = '',
+        section_separators = { left = '', right = '' },
       },
       sections = {
-        -- lualine_a = {}
-        lualine_c = {
-          {
-            "filename",
+        lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
+        lualine_b = {
+          { 'filename',
+            path = 1,
             symbols = {
               modified = "●",
+              read_only = "󰌾"
             },
-            Harpoonline.format,
           },
+          { 'branch' },
         },
-
+        lualine_c = {
+          '%=',
+          { Harpoonline.format },
+          { "buffers", mode = 4, symbols = { alternate_file = "󰑱 " }},
+        },
         lualine_x = {
-          {
-            lazy_status.updates,
-            cond = lazy_status.has_updates,
-            color = { fg = "#ff9e64" },
-          },
-          { "encoding" },
-          { "fileformat" },
-          { "filetype" },
+          { lazy_status.updates, cond = lazy_status.has_updates, color = { fg = "#ff9e64" } }
+        },
+        lualine_y = { 'filetype', 'progress' },
+        lualine_z = {
+          { 'location', separator = { right = '' }, left_padding = 2 },
         },
       },
-    })
+      inactive_sections = {
+        lualine_a = { 'filename' },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = { 'location' },
+      },
+      tabline = {},
+      extensions = {},
+    }
   end,
 }
+
