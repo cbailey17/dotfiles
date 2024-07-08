@@ -43,6 +43,7 @@ return {
       local lspconfig = require("lspconfig")
       local cmp_nvim_lsp = require("cmp_nvim_lsp")
       local keymap = vim.keymap.set
+      require('lspconfig.ui.windows').default_options.border = 'single'
 
       local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
       for type, icon in pairs(signs) do
@@ -71,7 +72,7 @@ return {
       -- lspconfig.pyright.setup({})
       -- lspconfig.ruff_lsp.setup({})
 
-      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
       local lsp_formatting = function(bufnr)
         vim.lsp.buf.format({
