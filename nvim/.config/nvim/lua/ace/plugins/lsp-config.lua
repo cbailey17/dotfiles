@@ -1,5 +1,5 @@
 return {
- {
+  {
     "williamboman/mason.nvim",
     dependencies = {
       -- "j-hui/fidget.nvim",
@@ -8,6 +8,7 @@ return {
       -- require("fidget").setup({})
       require("mason").setup({
         ui = {
+          border = "rounded",
           icons = {
             package_installed = "✓",
             package_pending = "➜",
@@ -15,7 +16,7 @@ return {
           },
         },
       })
-    end
+    end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -26,9 +27,9 @@ return {
           "pyright",
           "jdtls",
           "gopls",
-        }
+        },
       })
-    end
+    end,
   },
   {
     "neovim/nvim-lspconfig",
@@ -52,10 +53,10 @@ return {
       -- a table with the LSPs and whether or not
       -- they're allowed to format buffers
       local servers_filters = {
-        ["html"] = false,       -- we use prettier
-        ["tsserver"] = false,   -- we use prettier
-        ["eslint"] = false,     -- not for formatting
-        ["cssls"] = false,      -- we use prettier
+        ["html"] = false,   -- we use prettier
+        ["tsserver"] = false, -- we use prettier
+        ["eslint"] = false, -- not for formatting
+        ["cssls"] = false,  -- we use prettier
         ["tailwindcss"] = true, -- shouldn't clash with prettier idk
         ["ruff_lsp"] = true,
         ["pyright"] = false,
@@ -64,13 +65,12 @@ return {
         ["gopls"] = true,
       }
 
-      lspconfig.gopls.setup({})
-      lspconfig.tsserver.setup({})
-      lspconfig.lua_ls.setup({})
-      lspconfig.pyright.setup({})
-      lspconfig.ruff_lsp.setup({})
+      -- lspconfig.gopls.setup({})
+      -- lspconfig.tsserver.setup({})
+      -- lspconfig.lua_ls.setup({})
+      -- lspconfig.pyright.setup({})
+      -- lspconfig.ruff_lsp.setup({})
 
-      -- IMPORTANT!
       local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
       local lsp_formatting = function(bufnr)
@@ -85,7 +85,7 @@ return {
 
       -- lsp keymaps and auto formatting
       local on_attach = function(client, bufnr)
-        if client.name == 'ruff_lsp' then
+        if client.name == "ruff_lsp" then
           client.server_capabilities.hoverProvider = false
         end
         if client.supports_method("textDocument/formatting") then
@@ -94,7 +94,7 @@ return {
             group = augroup,
             buffer = bufnr,
             callback = function()
-              lsp_formatting(bufnr)
+              -- lsp_formatting(bufnr)
             end,
           })
         end
@@ -128,10 +128,10 @@ return {
           capabilities = capabilities,
           handlers = handlers,
         }
-        if server ~= 'jdtls' then
+        if server ~= "jdtls" then
           lspconfig[server].setup(opts)
         end
       end
-    end
-  }
+    end,
+  },
 }
