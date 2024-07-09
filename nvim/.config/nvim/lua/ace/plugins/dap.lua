@@ -1,11 +1,9 @@
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
-    "mfussenegger/nvim-dap-python",
     "rcarriga/nvim-dap-ui",
     "theHamsta/nvim-dap-virtual-text",
     "nvim-neotest/nvim-nio",
-    "williamboman/mason.nvim",
   },
   config = function()
     local dap = require("dap")
@@ -40,9 +38,6 @@ return {
         vmArgs = "-Xmx2G",          -- configuration arguments
       },
     }
-
-    local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
-    require("dap-python").setup(path)
 
     vim.fn.sign_define(
       "DapBreakpoint",

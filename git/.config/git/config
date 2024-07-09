@@ -1,12 +1,14 @@
 [user]
 	name = cbailey17
 	email = a.cameronbailey@gmail.com
+  signingkey = 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
+  ; email = cbailey@looq.ai 
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+	helper = cache
+	; helper = !/usr/bin/gh auth git-credential
 [core]
 	protectNTFS = true
 [safe]
