@@ -2,8 +2,7 @@
 return {
   "folke/noice.nvim",
   event = "VeryLazy",
-  opts = {
-  },
+  opts = {},
   dependencies = {
     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
     "MunifTanjim/nui.nvim",
@@ -18,7 +17,7 @@ return {
           ["vim.lsp.util.stylize_markdown"] = true,
           ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
         },
-      }
+      },
     })
   end,
 }

@@ -109,6 +109,7 @@ return {
     telescope.load_extension("harpoon")
     telescope.load_extension("conflicts")
     telescope.load_extension("whaler")
+    telescope.load_extension("aerial")
 
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
@@ -139,6 +140,7 @@ return {
     keymap.set("n", "<leader>fj", "<cmd>Telescope jumplist<cr>", { desc = "Search jump list" })
     keymap.set("n", "<leader>fc", "<cmd>Telescope colorscheme<cr>", { desc = "Search color schemes" })
     keymap.set("n", "<leader>fm", "<cmd>Telescope marks<cr>", { desc = "Telescope marks" })
+    keymap.set("n", "<leader>fa", "<cmd>Telescope aerial<cr>", { desc = "Telescope aerial" })
     keymap.set(
       "n",
       "<leader>fo",

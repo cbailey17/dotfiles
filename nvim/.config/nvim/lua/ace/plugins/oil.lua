@@ -1,5 +1,5 @@
 return {
-  'stevearc/oil.nvim',
+  "stevearc/oil.nvim",
   opts = {},
   config = function()
     require("oil").setup({
@@ -9,8 +9,16 @@ return {
       keymaps = {
         ["g?"] = "actions.show_help",
         ["<CR>"] = "actions.select",
-        ["<C-s>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
-        ["<C-->"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
+        ["<C-s>"] = {
+          "actions.select",
+          opts = { vertical = true },
+          desc = "Open the entry in a vertical split",
+        },
+        ["<C-->"] = {
+          "actions.select",
+          opts = { horizontal = true },
+          desc = "Open the entry in a horizontal split",
+        },
         ["<C-t>"] = { "actions.select", opts = { tab = true }, desc = "Open the entry in new tab" },
         ["<C-p>"] = "actions.preview",
         ["<C-c>"] = "actions.close",
@@ -30,10 +38,10 @@ return {
         show_hidden = true,
         natural_order = true,
         is_always_hidden = function(name, _)
-          return name == '..' or name == '.git' or name == '.svn'
+          return name == ".." or name == ".git" or name == ".svn"
         end,
       },
-      preview_split = 'right',
+      preview_split = "right",
     })
     vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
   end,
