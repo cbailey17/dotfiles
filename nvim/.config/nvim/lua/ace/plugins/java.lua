@@ -1,16 +1,16 @@
 return {
-  {
-    -- Spring boot plugin
-    "JavaHello/spring-boot.nvim",
-    ft = "java",
-    dependencies = {
-      "mfussenegger/nvim-jdtls",
-      -- "ibhagwan/fzf-lua",
-    },
-    config = function()
-      require("spring_boot").setup({})
-    end,
-  },
+  -- {
+  --   -- Spring boot plugin
+  --   "JavaHello/spring-boot.nvim",
+  --   ft = "java",
+  --   dependencies = {
+  --     "mfussenegger/nvim-jdtls",
+  --     -- "ibhagwan/fzf-lua",
+  --   },
+  --   config = function()
+  --     require("spring_boot").setup({})
+  --   end,
+  -- },
   {
     "mfussenegger/nvim-jdtls",
     ft = { "java" },
@@ -19,20 +19,16 @@ return {
     },
     config = function()
       local jdtls = require("jdtls")
-      local handlers = require("ace.handlers")
-
-      local java_cmds = vim.api.nvim_create_augroup('java_cmds', { clear = true })
-      local cache_vars = {}
 
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local extendedClientCapabilities = jdtls.extendedClientCapabilities
 
       -- Get workspace directory for each project based on name
       local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-      local workspace_dir = "/home/acbailey/Developer/java/" .. project_name
+      local workspace_dir = "/home/acbailey/Developer/java" -- .. project_name
 
       -- Set proper Java executable
-      local java_cmd = "/usr/lib/jvm/jdk-11-openjdk/bin/java"
+      local java_cmd = "/usr/lib/jvm/java-21-openjdk/bin/java"
 
       -- Mason registry and language server path from mason
       local mason_registry = require("mason-registry")
@@ -54,12 +50,13 @@ return {
           "\n"
         )
       )
-      vim.list_extend(bundles, require("spring_boot").java_extensions())
+      -- vim.list_extend(bundles, require("spring_boot").java_extensions())
 
       -- Main configuration table
       local config = {
         cmd = {
           java_cmd,
+          -- "java",
 
           "-Declipse.application=org.eclipse.jdt.ls.core.id1",
           "-Dosgi.bundles.defaultStartLevel=4",
@@ -72,7 +69,7 @@ return {
           "java.base/java.util=ALL-UNNAMED",
           "--add-opens",
           "java.base/java.lang=ALL-UNNAMED",
-          '-javaagent:' .. java_agent,
+          "-javaagent:" .. java_agent,
 
           "-jar",
           vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar"),
@@ -136,11 +133,11 @@ return {
             },
             inlayHints = {
               parameterNames = {
-                enabled = 'all', -- literals, all, none
+                enabled = "all", -- literals, all, none
               },
             },
             format = {
-              enabled = true,
+              enabled = false,
               -- settings = {
               --   profile = "asdf"
               -- }
@@ -176,12 +173,6 @@ return {
           },
         },
 
-        on_init = function(client)
-          if client.config.settings then
-            client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
-          end
-        end,
-
         init_options = {
           bundles = bundles,
         },
@@ -189,14 +180,18 @@ return {
 
         on_attach = function(client, bufnr)
           -- handlers.on_attach(client, bufnr)
-          require("lvim.lsp").common_on_attach(client, bufnr)
           if client.name == "jdtls" then
             local map = function(mode, lhs, rhs, desc)
               if desc then
                 desc = desc
               end
 
-              vim.keymap.set(mode, lhs, rhs, { silent = true, desc = desc, buffer = bufnr, noremap = true })
+              vim.keymap.set(
+                mode,
+                lhs,
+                rhs,
+                { silent = true, desc = desc, buffer = bufnr, noremap = true }
+              )
             end
             map("n", "<leader>Co", jdtls.organize_imports, "Organize Imports")
             map("n", "<leader>Cv", jdtls.extract_variable, "Extract Variable")
@@ -204,9 +199,24 @@ return {
             map("n", "<leader>Ct", jdtls.test_nearest_method, "Test Method")
             map("n", "<leader>CT", jdtls.test_class, "Test Class")
             map("n", "<leader>Cu", "<Cmd>JdtUpdateConfig<CR>", "Update Config")
-            map("v", "<leader>Cv", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", "Extract Variable")
-            map("v", "<leader>Cc", "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", "Extract Constant")
-            map("v", "<leader>Cm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", "Extract Method")
+            map(
+              "v",
+              "<leader>Cv",
+              "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>",
+              "Extract Variable"
+            )
+            map(
+              "v",
+              "<leader>Cc",
+              "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>",
+              "Extract Constant"
+            )
+            map(
+              "v",
+              "<leader>Cm",
+              "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>",
+              "Extract Method"
+            )
 
             require("which-key").register({
               ["<leader>de"] = { "<cmd>DapContinue<cr>", "[JDLTS] Show debug configurations" },
@@ -216,21 +226,17 @@ return {
               },
             })
             ---@diagnostic disable-next-line: missing-fields
-            jdtls.setup_dap({ hotcodereplace = "auto" })
-            -- Auto-detect main and setup dap config
-            require("jdtls.dap").setup_dap_main_class_configs({
-              config_overrides = {
-                vmArgs = "-Dspring.profiles.active=local",
-              },
-            })
+            -- jdtls.setup_dap({ hotcodereplace = "auto" })
+            -- -- Auto-detect main and setup dap config
+            -- require("jdtls.dap").setup_dap_main_class_configs({
+            --   config_overrides = {
+            --     vmArgs = "-Dspring.profiles.active=local",
+            --   },
+            -- })
           end
         end,
       }
       jdtls.start_or_attach(config)
-
-      vim.cmd(
-        [[command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)]]
-      )
     end,
   },
 }
