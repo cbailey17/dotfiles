@@ -3,6 +3,7 @@
         "vim"
     ],
     "diagnostics.disable": [
-        "inject-field"
+        "inject-field",
+        "missing-fields"
     ]
 }
