@@ -2,14 +2,16 @@ return {
   "akinsho/bufferline.nvim",
   -- lazy = true,
   dependencies = { "kyazdani42/nvim-web-devicons" },
+  version = "*",
   config = function()
     require("bufferline").setup({
       options = {
-        mode = "buffers", -- set to "tabs" to only show tabpages instead
+        mode = "tabs", -- set to "tabs" to only show tabpages instead
         numbers = "none",
-        -- indicator = { icon = "| ", style = "none" },
+        indicator = { icon = " ", style = "none" },
         buffer_close_icon = "󰅖",
-        modified_icon = "●",
+        -- modified_icon = "●",
+        modified_icon = " ",
         close_icon = "",
         left_trunc_marker = "",
         right_trunc_marker = "",
@@ -29,7 +31,7 @@ return {
         persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
         -- can also be a table containing 2 custom separators
         -- [focused and unfocused]. eg: { '|', '|' }
-        separator_style = "thin",
+        separator_style = "padded_slant",
         enforce_regular_tabs = false,
         hover = {
           enabled = true,
