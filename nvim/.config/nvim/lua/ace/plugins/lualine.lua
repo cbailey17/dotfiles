@@ -10,11 +10,14 @@ return {
     -- Harpoon integration
     local Harpoonline = require("harpoonline")
     Harpoonline.setup({
-      on_update = function() require("lualine").refresh() end,
+      on_update = function()
+        require("lualine").refresh()
+      end,
     })
 
     local colors = {
-      blue = "#65D1FF",
+      -- blue = "#65D1FF",
+      blue = "#2cF9ed",
       green = "#3EFFDC",
       violet = "#FF61EF",
       yellow = "#FFDA7B",
@@ -59,48 +62,48 @@ return {
     }
 
     -- Set up lualine sections
-    require('lualine').setup {
+    require("lualine").setup({
       options = {
         theme = custom_bubbles_theme,
-        component_separators = '',
-        section_separators = { left = '', right = '' },
+        component_separators = "",
+        section_separators = { left = "", right = "" },
       },
       sections = {
-        lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
+        lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
         lualine_b = {
-          { 'filename',
+          {
+            "filename",
             path = 1,
             symbols = {
               modified = "●",
-              read_only = "󰌾"
+              read_only = "󰌾",
             },
           },
-          { 'branch' },
+          { "branch" },
         },
         lualine_c = {
-          '%=',
+          "%=",
           { Harpoonline.format },
-          { "buffers", mode = 4, symbols = { alternate_file = "󰑱 " }},
+          { "buffers", mode = 4, symbols = { alternate_file = "󰑱 " } },
         },
         lualine_x = {
-          { lazy_status.updates, cond = lazy_status.has_updates, color = { fg = "#ff9e64" } }
+          { lazy_status.updates, cond = lazy_status.has_updates, color = { fg = "#ff9e64" } },
         },
-        lualine_y = { 'filetype', 'progress' },
+        lualine_y = { "filetype", "progress" },
         lualine_z = {
-          { 'location', separator = { right = '' }, left_padding = 2 },
+          { "location", separator = { right = "" }, left_padding = 2 },
         },
       },
       inactive_sections = {
-        lualine_a = { 'filename' },
+        lualine_a = { "filename" },
         lualine_b = {},
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = { 'location' },
+        lualine_z = { "location" },
       },
       tabline = {},
       extensions = {},
-    }
+    })
   end,
 }
-

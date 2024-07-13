@@ -1,0 +1,1240 @@
+
+
+SpecialKey
+EndOfBuffer NvimTreeEndOfBuffer DapUIEndofBuffer
+TermCursor
+NonText TelescopePreviewHyphen TelescopeResultsDiffUntracked TelescopePromptCounter
+Directory LspKindFolder NoiceCompletionItemKindFolder AerialFolderIcon CmpItemKindFolder OilDir OilDirIcon TelescopePreviewDate TelescopePreviewDirectory TroubleDirectory TroubleFilename TroubleFsBasename TroubleFsFilename TroubleBasename NvimTreeFolderName NvimTreeEmptyFolderName NvimTreeOpenedFolderName NvimTreeSymlinkFolderName
+ErrorMsg NvimInvalidSpacing
+IncSearch CurSearch
+Search TelescopePreviewMatch
+MoreMsg
+ModeMsg NvimTreeLiveFilterValue
+LineNr TelescopeResultsLineNr TroubleIndent TroublePos TroubleIndentWs TroubleIndentLast TroubleIndentMiddle TroubleIndentTop TroubleIndentFoldOpen TroubleFsPos NvimTreeLineNr
+LineNrAbove
+LineNrBelow
+CursorLineNr MarkSignNumHL TroubleIndentFoldClosed NvimTreeCursorLineNr
+Question NvimTreeExecFile
+StatusLine MsgSeparator WinBar NvimTreeStatusLine
+StatusLineNC WinBarNC NvimTreeStatusLineNC
+WinSeparator
+VertSplit
+Title
+Visual SnippetTabstop TelescopePreviewLine TelescopeSelection TelescopeSelectionCaret TroublePreview
+WarningMsg
+WildMenu
+Folded
+FoldColumn CursorLineFold
+DiffAdd TelescopeResultsDiffAdd
+DiffChange TelescopeResultsDiffChange
+DiffDelete TelescopeResultsDiffDelete
+DiffText
+SignColumn CursorLineSign
+Conceal LspKindSnippet AerialSnippetIcon NoiceCompletionItemKindSnippet CmpItemKindSnippet
+SpellBad NvimTreeCutHL
+SpellCap
+SpellRare NvimTreeCopiedHL
+SpellLocal NvimTreeBookmarkHL
+Pmenu PmenuKind PmenuExtra
+PmenuSel PmenuKindSel PmenuExtraSel
+PmenuSbar
+PmenuThumb
+TabLine
+TabLineSel
+TabLineFill
+CursorColumn NvimTreeCursorColumn
+CursorLine NvimTreeCursorLine
+ColorColumn
+QuickFixLine
+Whitespace
+NormalNC
+NormalFloat WhichKeyFloat NullLsInfoBorder TroubleNormalNC NvimTreeNormalFloat DapUIFloatNormal
+MsgArea
+FloatBorder
+Cursor
+FloatTitle FloatFooter
+RedrawDebugNormal
+Underlined
+lCursor
+CursorIM
+Substitute
+VisualNOS
+Normal Ignore NvimSpacing LspKindFile AerialFileIcon NoiceCompletionItemKindFile CmpItemKindFile TroubleIconFile NvimTreePopup DapUINormal DapUIVariable DapUIValue DapUIFrameName DapUINormalNC
+Character Character SpecialChar SpecialChar
+Constant Number Boolean Float LspCodeLensSeparator Constant Special Boolean Number Float
+Statement Conditional Repeat Label Exception TelescopePreviewWrite TelescopePreviewSocket
+Keyword
+PreProc Include Define Macro PreCondit
+Type
+Special
+Debug
+LspCodeLens
+LspInlayHint AerialLine AerialLineNC
+LspReferenceRead
+LspReferenceText
+LspReferenceWrite
+LspSignatureActiveParameter
+DiagnosticError DiagnosticFloatingError DiagnosticSignError OilDelete OilPurge OilTrash NvimTreeDiagnosticErrorIcon
+DiagnosticWarn DiagnosticFloatingWarn DiagnosticSignWarn OilMove NvimTreeDiagnosticWarnIcon
+DiagnosticInfo DiagnosticFloatingInfo DiagnosticSignInfo OilCreate OilRestore NvimTreeDiagnosticInfoIcon
+DiagnosticHint DiagnosticFloatingHint DiagnosticSignHint OilCopy NvimTreeDiagnosticHintIcon
+DiagnosticOk DiagnosticFloatingOk DiagnosticVirtualTextOk DiagnosticSignOk
+DiagnosticVirtualTextError
+DiagnosticVirtualTextWarn
+DiagnosticVirtualTextInfo
+DiagnosticVirtualTextHint
+DiagnosticUnnecessary
+Comment
+@variable
+@variable.builtin
+@variable.parameter
+@variable.parameter.builtin
+@module.builtin Include
+@label
+String
+@string.regexp
+@string.escape
+@type.builtin
+@property
+Identifier NvimIdentifier NvimIdentifierScope NvimIdentifierScopeDelimiter NvimIdentifierName NvimIdentifierKey NvimOptionName NvimOptionScope NvimOptionScopeDelimiter NvimEnvironmentName
+Function
+@constructor
+@operator
+Operator
+@keyword
+@punctuation.special Tag SpecialChar SpecialComment TelescopeResultsSpecialComment
+@comment.error
+@comment.warning
+@comment.note
+@comment.todo
+Todo
+@markup.strong
+@markup.italic
+@markup.strikethrough
+@markup.underline
+@markup.link
+Added
+Removed
+Changed
+@lsp.type.interface
+DiagnosticDeprecated
+FloatShadow
+FloatShadowThrough
+MatchParen
+RedrawDebugClear
+RedrawDebugComposed
+RedrawDebugRecompose
+Error NvimInvalid NvimInvalidAssignment NvimInvalidPlainAssignment NvimInvalidAugmentedAssignment NvimInvalidAssignmentWithAddition NvimInvalidAssignmentWithSubtraction NvimInvalidAssignmentWithConcatenation NvimInvalidOperator NvimInvalidUnaryOperator NvimInvalidUnaryPlus NvimInvalidUnaryMinus NvimInvalidNot NvimInvalidBinaryOperator NvimInvalidComparison NvimInvalidComparisonModifier NvimInvalidBinaryPlus NvimInvalidBinaryMinus NvimInvalidConcat NvimInvalidConcatOrSubscript NvimInvalidOr NvimInvalidAnd NvimInvalidMultiplication NvimInvalidDivision NvimInvalidMod NvimInvalidTernary NvimInvalidTernaryColon NvimInvalidDelimiter NvimInvalidParenthesis NvimInvalidLambda NvimInvalidNestingParenthesis NvimInvalidCallingParenthesis NvimInvalidSubscript NvimInvalidSubscriptBracket NvimInvalidSubscriptColon NvimInvalidCurly NvimInvalidContainer NvimInvalidDict NvimInvalidList NvimInvalidValue NvimInvalidIdentifier NvimInvalidIdentifierScope NvimInvalidIdentifierScopeDelimiter NvimInvalidIdentifierName NvimInvalidIdentifierKey NvimInvalidColon NvimInvalidComma NvimInvalidArrow NvimInvalidRegister NvimInvalidNumber NvimInvalidFloat NvimInvalidNumberPrefix NvimInvalidOptionSigil NvimInvalidOptionName NvimInvalidOptionScope NvimInvalidOptionScopeDelimiter NvimInvalidEnvironmentSigil NvimInvalidEnvironmentName NvimInvalidString NvimInvalidStringQuote NvimInvalidSingleQuote NvimInvalidDoubleQuote NvimInvalidDoubleQuotedUnknownEscape NvimInvalidFigureBrace NvimDoubleQuotedUnknownEscape
+DiagnosticUnderlineError NvimTreeDiagnosticErrorFileHL NvimTreeDiagnosticErrorFolderHL
+DiagnosticUnderlineWarn NvimTreeDiagnosticWarnFileHL NvimTreeDiagnosticWarnFolderHL
+DiagnosticUnderlineInfo NvimTreeDiagnosticInfoFileHL NvimTreeDiagnosticInfoFolderHL
+DiagnosticUnderlineHint NvimTreeDiagnosticHintFileHL NvimTreeDiagnosticHintFolderHL
+DiagnosticUnderlineOk
+NvimInternalError NvimFigureBrace NvimSingleQuotedUnknownEscape NvimInvalidSingleQuotedUnknownEscape
+healthError
+helpCommand
+TelescopeBorder TelescopeTitle TelescopeResultsTitle TelescopePreviewTitle TelescopePreviewBorder TelescopeResultsBorder
+TelescopeNormal TelescopePreviewNormal TelescopePreviewMessage TelescopePreviewMessageFillchar TelescopeResultsNormal TelescopePromptNormal
+TelescopePromptBorder
+Foo
+LspInfoBorder
+CmpItemKindDefault CmpItemKind CmpItemKindTypeParameterDefault CmpItemKindTextDefault CmpItemKindConstructorDefault CmpItemKindMethodDefault CmpItemKindEnumMemberDefault CmpItemKindFunctionDefault CmpItemKindClassDefault CmpItemKindValueDefault CmpItemKindFieldDefault CmpItemKindInterfaceDefault CmpItemKindModuleDefault CmpItemKindVariableDefault CmpItemKindPropertyDefault CmpItemKindUnitDefault CmpItemKindOperatorDefault CmpItemKindEnumDefault CmpItemKindSnippetDefault CmpItemKindColorDefault CmpItemKindFileDefault CmpItemKindReferenceDefault CmpItemKindFolderDefault CmpItemKindKeywordDefault CmpItemKindConstantDefault CmpItemKindStructDefault CmpItemKindEventDefault
+CmpItemKindCopilot
+GitSignsAdd
+GitSignsChange
+GitSignsDelete
+CmpItemKindCodeium
+CmpItemAbbrMatchFuzzy
+CmpItemAbbrMatch
+CmpItemAbbrDeprecated
+CmpItemAbbr
+NotifyDEBUGIcon
+WhichKeyGroup
+WhichKeyDesc
+WhichKeySeperator
+WhichKeySeparator
+WhichKeyValue
+NotifyINFOIcon
+@comment.info
+@punctuation.bracket
+NvimTreeGitNew NvimTreeGitNewIcon NvimTreeGitFileNewHL NvimTreeGitFolderNewHL
+NvimTreeImageFile
+NvimTreeIndentMarker NvimTreeFolderArrowClosed NvimTreeFolderArrowOpen
+NvimTreeNormal NvimTreeSignColumn NvimTreeFileIcon NvimTreeSymlinkIcon
+NvimTreeNormalNC
+NvimTreeOpenedFile NvimTreeOpenedHL
+NvimTreeRootFolder
+NvimTreeSpecialFile
+NvimTreeSymlink
+NvimTreeWinSeparator
+NotifyDEBUGBorder
+NotifyDEBUGBody
+NotifyBackground
+NotifyWARNTitle
+NotifyWARNIcon
+NotifyWARNBorder
+NotifyWARNBody
+NotifyTRACETitle
+NotifyTRACEIcon
+NotifyTRACEBorder
+NotifyTRACEBody
+NotifyINFOTitle
+NotifyINFOBorder
+NotifyINFOBody
+NotifyERRORTitle
+NotifyERRORIcon
+NotifyDEBUGTitle
+NotifyERRORBorder
+NotifyERRORBody
+NormalSB
+TroubleText
+TroubleNormal
+AerialGuide AerialGuide1 AerialGuide2 AerialGuide3
+TroubleCount TroubleFsCount
+@markup.list
+@markup.list.unchecked
+@markup.list.markdown
+@markup.list.checked
+NvimTreeFolderIcon NvimTreeBookmarkIcon NvimTreeOpenedFolderIcon NvimTreeClosedFolderIcon
+NvimTreeGitDeleted NvimTreeGitDeletedIcon NvimTreeGitFileDeletedHL NvimTreeGitFolderDeletedHL
+@constructor.tsx
+diffIndexLine
+Italic
+htmlH2
+@tag.delimiter.tsx
+diffLine
+@tag.tsx Label Special Delimiter @property NullLsInfoHeader
+@markup.heading.2.markdown
+@markup.heading.3.markdown
+@markup.heading.5.markdown
+@lsp.type.unresolvedReference
+diffNewFile
+diffOldFile
+diffChanged
+diffRemoved
+diffAdded
+@markup.emphasis
+healthWarning
+@keyword.function Function Special Delimiter LspKindColor AerialColorIcon LspKindEvent CmpItemKindEvent NoiceCompletionItemKindColor CmpItemKindColor NoiceCompletionItemKindEvent AerialEventIcon
+@markup.heading.6.markdown
+@lsp.typemod.type.defaultLibrary StorageClass Structure Typedef Type
+@markup.heading.4.markdown
+@markup.heading.1.markdown
+@string.documentation String SpecialChar Underlined NvimRegister NvimStringSpecial NvimSingleQuotedQuote NvimDoubleQuotedEscape NvimInvalidStringSpecial NvimInvalidSingleQuotedQuote NvimInvalidDoubleQuotedEscape
+@punctuation.delimiter Delimiter NvimParenthesis NvimLambda NvimNestingParenthesis NvimCallingParenthesis NvimSubscript NvimSubscriptBracket NvimSubscriptColon NvimCurly NvimContainer NvimDict NvimList NvimColon NvimComma NvimArrow
+DapStoppedLine
+htmlH1
+qfFileName
+NoiceCmdlineIconLua
+NoiceCmdlinePopupBorderInput
+NoiceCmdlinePopupTitleLua
+NoiceCompletionItemKindDefault
+CmpItemKindTabNine
+qfLineNr
+@lsp.typemod.typeAlias.defaultLibrary @type @comment @attribute @type @constant @type @function @keyword @constant.macro Define @function.method Function @type.qualifier @keyword @module @number @operator @variable.parameter @property @string.regexp @string @type @type @type.definition Typedef DiagnosticDeprecated NvimAssignment NvimPlainAssignment NvimAugmentedAssignment NvimAssignmentWithAddition NvimAssignmentWithSubtraction NvimAssignmentWithConcatenation NvimOperator NvimUnaryOperator NvimUnaryPlus NvimUnaryMinus NvimNot NvimBinaryOperator NvimComparison NvimComparisonModifier NvimBinaryPlus NvimBinaryMinus NvimConcat NvimConcatOrSubscript NvimOr NvimAnd NvimMultiplication NvimDivision NvimMod NvimTernary NvimTernaryColon NvimNumber NvimFloat NvimNumberPrefix NvimOptionSigil NvimEnvironmentSigil NvimString NvimStringBody NvimStringQuote NvimSingleQuote NvimSingleQuotedBody NvimDoubleQuote NvimDoubleQuotedBody NvimInvalidStringBody NvimInvalidSingleQuotedBody NvimInvalidDoubleQuotedBody @variable.builtin Conditional @function.builtin StorageClass @string @constant @variable.builtin @type.definition @function.builtin Include @keyword.coroutine @keyword @keyword Repeat Exception PreProc @function Macro @keyword.storage @variable @variable.builtin @function @type.builtin @type.builtin @constant.builtin @type.builtin @variable @keyword @operator @operator @variable @variable.builtin @markup.list @string.escape @attribute PreProc Special @boolean Debug @function.builtin @function.method @type.builtin Define OilSocket TelescopeResultsNumber TelescopeResultsOperator TelescopeResultsMethod TelescopeResultsFunction TelescopeResultsField TelescopeResultsConstant TelescopeResultsClass TelescopePreviewGroup TelescopePreviewUser TelescopePreviewSticky TelescopePreviewRead TelescopePreviewBlock TelescopePreviewCharDev TelescopePreviewPipe NvimTreeGitStagedIcon NvimTreeGitFileStagedHL NvimTreeGitFolderStagedHL NvimTreeGitMergeIcon NvimTreeGitFileMergeHL NvimTreeGitFolderMergeHL NvimTreeGitRenamedIcon NvimTreeGitFileRenamedHL NvimTreeGitFolderRenamedHL NvimTreeLiveFilterPrefix LspInfoList
+BufferLineIndicatorSelected
+CmpDocumentation
+CmpDocumentationBorder
+CmpGhostText
+@variable.member
+SignColumnSB
+TelescopeResultsComment
+AerialNormal
+Bold
+healthSuccess
+LazyProgressDone
+diffFile
+LazyProgressTodo
+WhichKey
+@comment.hint Comment OilLinkTarget OilTrashSourcePath MarkVirtTextHL TroubleSource TroubleFsSource NvimTreeGitIgnoredIcon NvimTreeGitFileIgnoredHL NvimTreeGitFolderIgnoredHL LspInfoTip AerialPrivate AerialProtected
+@markup.raw.markdown_inline @none Title Special Underlined SpecialChar Identifier Macro Type String OilChange NullLsInfoSources NullLsInfoTitle MarkSignHL TelescopeResultsIdentifier TelescopeResultsVariable TelescopePreviewSize TelescopePreviewExecute TelescopePreviewLink TelescopePromptPrefix TelescopeMatching TelescopeMultiIcon TelescopeMultiSelection TroubleCode TroubleIconDirectory TroubleIconEvent NvimTreeModifiedIcon NvimTreeModifiedFileHL NvimTreeModifiedFolderHL LspInfoFiletype LspInfoTitle
+CmpItemMenu
+NvimTreeGitDirty NvimTreeGitDirtyIcon NvimTreeGitFileDirtyHL NvimTreeGitFolderDirtyHL
+AlphaShortcut
+debugBreakpoint
+TelescopePromptTitle
+AlphaHeaderLabel
+AlphaFooter
+AlphaButtons
+AlphaHeader
+NoiceCmdlineIconInput
+NoiceCmdlinePopupBorderLua
+NoiceCmdlinePopupTitleInput
+lualine_a_visual
+lualine_c_visual
+lualine_b_visual
+lualine_a_insert
+lualine_c_insert
+lualine_b_insert
+lualine_a_normal
+lualine_c_normal lualine_c_buffers_active
+lualine_b_normal
+lualine_a_replace
+lualine_c_replace
+lualine_b_replace
+lualine_a_inactive
+lualine_c_inactive lualine_c_buffers_inactive
+lualine_b_inactive
+lualine_a_command
+lualine_c_command
+lualine_b_command
+lualine_x_7_normal
+lualine_x_7_insert
+lualine_x_7_visual
+lualine_x_7_replace
+lualine_x_7_command
+lualine_x_7_terminal
+lualine_x_7_inactive
+CmpItemAbbrDefault
+CmpItemAbbrDeprecatedDefault
+CmpItemAbbrMatchDefault
+CmpItemAbbrMatchFuzzyDefault
+CmpItemMenuDefault
+DevIconDefault
+DevIconVHDL
+DevIconTmux
+DevIconMagnet
+DevIconM4V
+DevIconMPEG4
+DevIconDconf
+DevIconLua
+DevIconTypeScriptDeclaration
+DevIconJsonc
+DevIconCrdownload
+DevIconLogos
+DevIconInfo
+DevIconConfig
+DevIconStaticLibraryArchive
+DevIconIge
+DevIconD
+DevIconIfb
+DevIconClojureDart
+DevIconIcs
+DevIconIcalendar
+DevIconIcal
+DevIconIxx
+DevIconBz3
+DevIconBz2
+DevIconHuff
+DevIconBz
+DevIconBoundaryRepresentation
+DevIconSha256
+DevIconBlender
+DevIconR
+DevIconDiff
+DevIconJava
+DevIconJson
+DevIconVim
+DevIconVerilog
+DevIconCpp
+DevIconDesktopEntry
+DevIconGodotTextScene
+DevIconFs
+DevIconConfiguration
+DevIconVlang
+DevIconFish
+DevIconCts
+DevIconTsx
+DevIconYaml
+DevIconTwig
+DevIconGraphQL
+DevIconBash
+DevIconDockerfile
+DevIconCue
+DevIconZig
+DevIconArduino
+DevIconYml
+DevIconLicense
+DevIconBlade
+DevIconBin
+DevIconEjs
+DevIconAzureCli
+DevIconApp
+DevIconapk
+DevIconAndroid
+DevIconSub
+DevIconMonkeysAudio
+DevIconAudioInterchangeFileFormat
+DevIconAdvancedAudioCoding
+DevIconTerminal
+DevIcon7z
+DevIcon3DObjectFile
+DevIcon3gp
+DevIconMakefile
+DevIconZigObjectNotation
+DevIconGitLogo
+DevIconNodeModules
+DevIconLog
+DevIconElisp
+DevIconLiquid
+DevIconLess
+DevIconCMake
+DevIconArch
+DevIconJl
+DevIconJson5
+DevIconTex
+DevIconWebmanifest
+DevIconMarkdown
+DevIconCache
+DevIconJsx
+DevIconCjs
+DevIconJs
+DevIconMjs
+DevIconXml
+DevIconMustache
+DevIconSh
+DevIconFsi
+DevIconFsx
+DevIconVoid
+DevIconGodotTextResource
+DevIconFortran
+DevIconMotoko
+DevIconPhp
+DevIconTempl
+DevIconRb
+DevIconHaml
+DevIconHbs
+DevIconSharedObject
+DevIconDll
+DevIconSystemVerilog
+DevIconxmonad
+DevIconSvg
+DevIconCMakeLists
+DevIconVLC
+DevIconBSPWM
+DevIconStp
+DevIconVimrc
+DevIconGvimrc
+DevIconHh
+DevIconAss
+DevIconXsession
+DevIconSrt
+DevIconXInitrc
+DevIconTailwindConfig
+DevIconXauthority
+DevIconSRCINFO
+DevIconSvelteConfig
+DevIconCobol
+DevIconLib
+DevIconQt
+DevIconnode
+DevIconClojureJS
+DevIconPrusaSlicer
+DevIconNPMIgnore
+DevIconMailmap
+DevIconGTK
+DevIconPlatformio
+DevIconLibrecadFontFile
+DevIconEslintIgnore
+DevIconBazelWorkspace
+DevIconStep
+DevIconEnv
+DevIconDsStore
+DevIconLXQtConfigFile
+DevIconLXDEConfigFile
+DevIconKrita
+DevIconLinuxKernelObject
+DevIconGradleSettings
+DevIconGradleBuildScript
+DevIconPsScriptfile
+DevIconPsScriptModulefile
+DevIconXorgConf
+DevIconKiCad
+DevIconBibTeX
+DevIconKDEglobals
+DevIconPKGBUILD
+DevIconKalgebrarc
+DevIconJustfile
+DevIconBashrc
+DevIconKdbx
+DevIconi3
+DevIconHyprland
+DevIconGulpfile
+DevIconKdb
+DevIconGruntfile
+DevIconJpegXl
+DevIconLocalization
+DevIconPls
+DevIconMixLock
+DevIconGradleWrapperProperties
+DevIconPy.typed
+DevIconJWM
+DevIconBashProfile
+DevIconGradleProperties
+DevIconEditorConfig
+DevIconFreeCADConfig
+DevIconKiCadFootprintTable
+DevIconGv
+DevIconKiCadCache
+DevIconAstro
+DevIconFavicon
+DevIconDot
+DevIconSignature
+DevIconTypoScriptSetup
+DevIconIni
+DevIconImg
+DevIconGroovy
+DevIconImage
+DevIconPackageJson
+DevIconDart
+DevIconGemfile
+DevIconBat
+DevIconBzl
+DevIconGuix
+DevIconGif
+DevIconTypoScriptConfig
+DevIconMts
+DevIconNPMrc
+DevIconPy
+DevIconcuda
+DevIconConf
+DevIconcudah
+DevIconTorrent
+DevIconCss
+DevIconDocx
+DevIconSolidWorksAsm
+DevIconCsv
+DevIconArtix
+DevIconRmd
+DevIconRazorPage
+DevIconKdenlive
+DevIconBazel
+DevIconCs
+DevIconTgz
+DevIconMl
+DevIconSolidity
+DevIconAvif
+DevIconApple
+DevIconCxxm
+DevIconCppm
+DevIconCPlusPlusModule
+DevIconGitConfig
+DevIconHxx
+DevIconElf
+DevIconCxx
+DevIconCPlusPlus
+DevIconTestTs
+DevIconBlueprint
+DevIconJavaScriptReactTest
+DevIconRar
+DevIconKdenliveLayoutsrc
+DevIconTcl
+DevIconHpp
+DevIconFluxbox
+DevIconEpp
+DevIconPm
+DevIconRproj
+DevIconLrc
+DevIconEnlightenment
+DevIconLuau
+DevIconXz
+DevIconTerraform
+DevIconTestJs
+DevIconXls
+DevIconWebpack
+DevIconPp
+DevIconScss
+DevIconSuo
+DevIconGNOME
+DevIconPatch
+DevIconCinnamon
+DevIconPsd
+DevIconLhs
+DevIconScheme
+DevIconFreeCAD
+DevIconScala
+DevIconsbt
+DevIconNfo
+DevIconPng
+DevIconMaven
+DevIconSass
+DevIconGradleWrapperScript
+DevIconDb
+DevIconSte
+DevIconEx
+DevIconRs
+DevIconRake
+DevIconRlib
+DevIconSql
+DevIconPyd
+DevIconPsb
+DevIconProcfile
+DevIconPpt
+DevIconPackedResource
+DevIconOpenTypeFont
+DevIconOpusAudioFile
+DevIconSpecTs
+DevIconH
+DevIconJavaScriptReactSpec
+DevIconExs
+DevIconLock
+DevIconPdf
+DevIconIco
+DevIconPrisma
+DevIconHaxe
+DevIconVanillaOS
+DevIconSlackware
+DevIconGodotProject
+DevIconBinaryGLTF
+DevIconSolveSpace
+DevIconFsharp
+DevIconSabayon
+DevIconMdx
+DevIconDrools
+DevIconSolidWorksPrt
+DevIconDoc
+DevIconRockyLinux
+DevIconCson
+DevIconSketchUp
+DevIconCoffee
+DevIconBmp
+DevIconRedhat
+DevIconVagrantfile
+DevIconSha512
+DevIconGitCommit
+DevIconBackup
+DevIconSha384
+DevIconNswag
+DevIconSha224
+DevIconTor
+DevIconSha1
+DevIconHtml
+DevIconPuppyLinux
+DevIconBabelrc
+DevIconArcoLinux
+DevIconMojo
+DevIconPrettierConfig
+DevIconpostmarketOS
+DevIconLXDE
+DevIconArchlabs
+DevIconNushell
+DevIconFreeLosslessAudioCodec
+DevIconPop_OS
+DevIconArchcraft
+DevIconC
+DevIconKritarc
+DevIconParrot
+DevIconNix
+DevIconConfigRu
+DevIconAwk
+DevIconAOSC
+DevIconParabolaGNULinuxLibre
+DevIconIso
+DevIconGitAttributes
+DevIconOrgMode
+DevIconAlpine
+DevIconopenSUSE
+DevIconMint
+DevIconSway
+DevIconAlmalinux
+DevIconOpenBSD
+DevIconTFVars
+DevIconQtile
+DevIconDownload
+DevIconNixOS
+DevIconEex
+DevIconReScript
+DevIconMXLinux
+DevIconZst
+DevIconElm
+DevIconPart
+DevIconManjaro
+DevIconCheckhealth
+DevIconFusion360
+DevIconZip
+DevIconZshprofile
+DevIconMageia
+DevIconNim
+DevIconErl
+DevIconHrl
+DevIconLXLE
+DevIcondwm
+DevIconDropbox
+DevIconLocOS
+DevIconXpi
+DevIconIges
+DevIconKubuntu
+DevIconTxt
+DevIconawesome
+DevIconKsh
+DevIconPxi
+DevIconImportConfiguration
+DevIconSolus
+DevIconPub
+DevIconKali
+DevIconXcLocalization
+DevIconMaterial
+DevIconClojure
+DevIconKDEPlasma
+DevIconIllumos
+DevIconRaspberryPiOS
+DevIconGIMP
+DevIconAsc
+DevIconZshrc
+DevIconTypeScript
+DevIconXaml
+DevIconSig
+DevIconLXQt
+DevIconKDEneon
+DevIconWindows
+DevIconGentoo
+DevIconPl
+DevIconFennel
+DevIconGitIgnore
+DevIconVRML
+DevIconGarudaLinux
+DevIconGemspec
+DevIconWebOpenFontFormat
+DevIconObjectiveCPlusPlus
+DevIconXresources
+DevIconWindowsMediaAudio
+DevIconMd
+DevIconGo
+DevIconObjectFile
+DevIconGDScript
+DevIconEndeavour
+DevIconKritadisplayrc
+DevIconKotlinScript
+DevIconXeroLinux
+DevIconDump
+DevIconElementary
+DevIconKdenliverc
+DevIconMATE
+DevIconDevuan
+DevIconLeex
+DevIconHtm
+DevIconWaveformAudioFile
+DevIconDeepin
+DevIconQuery
+DevIconDebian
+DevIconUbuntu
+DevIconPsManifestfile
+DevIconVala
+DevIconVsix
+DevIconTrisquelGNULinux
+DevIconZorin
+DevIconBudgie
+DevIconEdn
+DevIconCentos
+DevIconRakefile
+DevIconHyperbolaGNULinuxLibre
+DevIconXfce
+DevIconCsh
+DevIconBicep
+DevIconKiCadSymbolTable
+DevIconPackageLockJson
+DevIconAppleScript
+DevIconSsa
+DevIconAsciinema
+DevIconTypoScript
+DevIconCrystal
+DevIconTSConfig
+DevIconGitModules
+DevIconTxz
+DevIconStyl
+DevIconKbx
+DevIconAi
+DevIconTrueTypeFont
+DevIconCantorrc
+DevIconWeston
+DevIconSwift
+DevIconLuaurc
+DevIconXSettingsdConf
+DevIconErb
+DevIconTypeScriptReactTest
+DevIconMpp
+DevIconGz
+DevIconFreeBSD
+DevIconFedora
+DevIconJpeg
+DevIconXcPlayground
+DevIconBazelBuild
+DevIconHurl
+DevIconSln
+DevIconToml
+DevIconIgs
+DevIconSettingsJson
+DevIconIfc
+DevIconClojureC
+DevIconSml
+DevIconThunderbird
+DevIconPulseCodeModulation
+DevIconReScriptInterface
+DevIconGCode
+DevIconM3u8
+DevIconProlog
+DevIconM3u
+DevIconZshenv
+DevIconOut
+DevIconHexadecimal
+DevIconPyo
+DevIconHs
+DevIconSpecJs
+DevIconNotebook
+DevIconFIGletFontFormat
+DevIconPxd
+DevIconFIGletFontControl
+DevIconOggVorbis
+DevIconHeex
+DevIconKotlin
+DevIconFdmdownload
+DevIconScalaScript
+DevIconCrystalLinux
+DevIconBicepParameters
+DevIconLinux
+DevIconWebp
+DevIconJpg
+DevIconCSharpProject
+DevIconPyc
+DevIconSublime
+DevIconRss
+DevIconWasm
+DevIconWebm
+DevIconXul
+DevIconExe
+DevIconXlsx
+DevIconMp4
+DevIconSlim
+DevIconMPEGAudioLayerIII
+DevIconEpub
+DevIconMOV
+DevIconZsh
+DevIconEmbeddedOpenTypeFont
+DevIconMli
+DevIconMpv
+DevIconMobi
+DevIconEslintrc
+DevIconBrewfile
+DevIconQubesOS
+DevIconBigLinux
+DevIconTypeScriptReactSpec
+DevIconOpenSCAD
+DevIconCp
+DevIconVue
+DevIconFsscript
+DevIconMkv
+DevIconEbook
+DevIconTails
+DevIconAutoCADDxf
+DevIconUI
+DevIconAutoCADDwg
+DevIconObjectiveC
+DevIconSvelte
+DevIconGitlabCI
+DevIconMd5
+DevIconPyi
+DevIconPyx
+NvimTreeWindowPicker
+DapUIScope
+DapUIType
+DapUIModifiedValue
+DapUIDecoration
+DapUIThread
+DapUIStoppedThread
+DapUISource
+DapUILineNumber DapUIBreakpointsLine
+DapUIFloatBorder
+DapUIWatchesEmpty
+DapUIWatchesValue
+DapUIWatchesError
+DapUIBreakpointsPath
+DapUIBreakpointsInfo
+DapUIBreakpointsCurrentLine DapUICurrentFrameName
+DapUIBreakpointsDisabledLine
+DapUIStepOver
+DapUIStepInto
+DapUIStepBack
+DapUIStepOut
+DapUIStop
+DapUIPlayPause
+DapUIRestart
+DapUIUnavailable
+DapUIWinSelect
+DapUIPlayPauseNC
+DapUIRestartNC
+DapUIStopNC
+DapUIUnavailableNC
+DapUIStepOverNC
+DapUIStepIntoNC
+DapUIStepBackNC
+DapUIStepOutNC
+TailwindConceal
+BufferLineTabSelected
+BufferLineGroupLabel
+BufferLineGroupSeparator
+BufferLineTruncMarker
+BufferLineHint
+BufferLineWarning
+BufferLineModified
+BufferLineHintSelected
+BufferLineInfo
+BufferLineTab
+BufferLineFill
+BufferLineBufferSelected
+BufferLineNumbersSelected
+BufferLineCloseButtonSelected
+BufferLineDiagnosticSelected
+BufferLineBackground
+BufferLineHintDiagnosticSelected
+BufferLineError
+BufferLineInfoSelected
+BufferLineNumbers
+BufferLineInfoDiagnosticSelected
+BufferLineWarningSelected
+BufferLineWarningDiagnosticSelected
+BufferLineErrorSelected
+BufferLineErrorDiagnosticSelected
+BufferLineDuplicateSelected
+BufferLineDuplicateVisible
+BufferLineBuffer
+BufferLineDiagnostic
+BufferLinePick
+BufferLineOffsetSeparator
+BufferLinePickVisible
+BufferLinePickSelected
+BufferLineDuplicate
+BufferLineModifiedSelected
+BufferLineModifiedVisible
+BufferLineErrorDiagnosticVisible
+BufferLineErrorDiagnostic
+BufferLineErrorVisible
+BufferLineWarningDiagnosticVisible
+BufferLineWarningDiagnostic
+BufferLineWarningVisible
+BufferLineInfoDiagnosticVisible
+BufferLineInfoDiagnostic
+BufferLineInfoVisible
+BufferLineHintDiagnosticVisible
+BufferLineHintDiagnostic
+BufferLineHintVisible
+BufferLineDiagnosticVisible
+BufferLineNumbersVisible
+BufferLineBufferVisible
+BufferLineCloseButtonVisible
+BufferLineCloseButton
+BufferLineTabClose
+lualine_y_filetype_DevIconDefault_normal
+lualine_y_filetype_DevIconDefault_insert
+lualine_y_filetype_DevIconDefault_visual
+lualine_y_filetype_DevIconDefault_replace
+lualine_y_filetype_DevIconDefault_command
+lualine_y_filetype_DevIconDefault_terminal
+lualine_y_filetype_DevIconDefault_inactive
+lualine_transitional_lualine_a_normal_to_StatusLine
+AerialNormalFloat
+BufferLineDevIconDefaultSelected
+TodoBgWARN
+TodoFgWARN
+TodoSignWARN
+TodoBgNOTE
+TodoFgNOTE
+TodoSignNOTE
+TodoBgHACK
+TodoFgHACK
+TodoSignHACK
+TodoBgPERF
+TodoFgPERF
+TodoSignPERF
+TodoBgTODO
+TodoFgTODO
+TodoSignTODO
+TodoBgTEST
+TodoFgTEST
+TodoSignTEST
+TodoBgFIX
+TodoFgFIX
+TodoSignFIX
+GitSignsStagedAdd
+GitSignsStagedChange
+GitSignsStagedDelete
+GitSignsStagedChangedelete
+GitSignsStagedTopdelete
+GitSignsStagedAddNr
+GitSignsStagedChangeNr
+GitSignsStagedDeleteNr
+GitSignsStagedChangedeleteNr
+GitSignsStagedTopdeleteNr
+GitSignsStagedAddLn
+GitSignsStagedChangeLn
+GitSignsStagedChangedeleteLn
+ChatGPTQuestion
+ChatGPTWelcome
+ChatGPTTotalTokens
+ChatGPTTotalTokensBorder
+ChatGPTMessageAction
+ChatGPTCompletion
+NoiceFormatProgressDone
+NoiceHiddenCursor
+lualine_transitional_lualine_a_insert_to_StatusLine
+lualine_y_filetype_DevIconLua_normal
+lualine_y_filetype_DevIconLua_insert
+lualine_y_filetype_DevIconLua_visual
+lualine_y_filetype_DevIconLua_replace
+lualine_y_filetype_DevIconLua_command
+lualine_y_filetype_DevIconLua_terminal
+lualine_y_filetype_DevIconLua_inactive
+BufferLineDevIconLuaSelected
+NoiceAttr135
+NoiceAttr81
+NotifyINFOTitle113
+NotifyINFOBorder113
+NotifyINFOBody113
+NotifyINFOIcon113
+NotifyINFOTitle148
+NotifyINFOBorder148
+NotifyINFOBody148
+NotifyINFOIcon148
+NotifyINFOTitle153
+NotifyINFOBorder153
+NotifyINFOBody153
+NotifyINFOIcon153
+lualine_transitional_lualine_a_command_to_StatusLine
+NotifyWARNTitle161
+NotifyWARNBorder161
+NotifyWARNBody161
+NotifyWARNIcon161
+lualine_transitional_lualine_c_buffers_inactive_to_lualine_c_buffers_active
+lualine_y_filetype_DevIconTxt_normal
+lualine_y_filetype_DevIconTxt_insert
+lualine_y_filetype_DevIconTxt_visual
+lualine_y_filetype_DevIconTxt_replace
+lualine_y_filetype_DevIconTxt_command
+lualine_y_filetype_DevIconTxt_terminal
+lualine_y_filetype_DevIconTxt_inactive
+BufferLineDevIconTxtSelected
+lualine_transitional_lualine_a_visual_to_StatusLine
+NotifyINFOTitle226
+NotifyINFOBorder226
+NotifyINFOBody226
+NotifyINFOIcon226
+NotifyWARNTitle236
+NotifyWARNBorder236
+NotifyWARNBody236
+NotifyWARNIcon236
+NotifyINFOTitle237
+NotifyINFOBorder237
+NotifyINFOBody237
+NotifyINFOIcon237
+NotifyINFOTitle243
+NotifyINFOBorder243
+NotifyINFOBody243
+NotifyINFOIcon243
+NotifyWARNTitle248
+NotifyWARNBorder248
+NotifyWARNBody248
+NotifyWARNIcon248
+NotifyINFOTitle262
+NotifyINFOBorder262
+NotifyINFOBody262
+NotifyINFOIcon262
+NoiceAttr55
+NotifyERRORTitle263
+NotifyERRORBorder263
+NotifyERRORBody263
+NotifyERRORIcon263
+NotifyINFOTitle287
+NotifyINFOBorder287
+NotifyINFOBody287
+NotifyINFOIcon287
+NotifyWARNTitle292
+NotifyWARNBorder292
+NotifyWARNBody292
+NotifyWARNIcon292
+AerialGuide	links to
+AerialGuide	links to AerialGuide4
+AerialGuide	links to AerialGuide5
+AerialGuide	links to AerialGuide6
+AerialGuide	links to AerialGuide7
+AerialGuide	links to AerialGuide8
+AerialGuide	links to AerialGuide9
+AerialNormal	links to AerialArray
+AerialNormal	links to AerialBoolean
+AerialNormal	links to AerialClass
+AerialNormal	links to AerialConstant
+AerialNormal	links to AerialConstructor
+AerialNormal	links to AerialEnum
+AerialNormal	links to AerialEnumMember
+AerialNormal	links to AerialEvent
+AerialNormal	links to AerialField
+AerialNormal	links to AerialFile
+AerialNormal	links to AerialFunction
+AerialNormal	links to AerialInterface
+AerialNormal	links to AerialKey
+AerialNormal	links to AerialMethod
+AerialNormal	links to AerialModule
+AerialNormal	links to AerialNamespace
+AerialNormal	links to AerialNull
+AerialNormal	links to AerialNumber
+AerialNormal	links to AerialObject
+AerialNormal	links to AerialOperator
+AerialNormal	links to AerialPackage
+AerialNormal	links to AerialProperty
+AerialNormal	links to AerialString
+AerialNormal	links to AerialStruct
+AerialNormal	links to AerialTypeParameter
+AerialNormal	links to AerialVariable
+FloatBorder	links to WhichKeyBorder
+Comment	links to SidebarNvimSectionSeperator
+Comment	links to SidebarNvimSectionTitleSeperator
+Directory	links to SidebarNvimSectionTitle
+LineNr	links to SidebarNvimLineNr
+Comment	links to SidebarNvimComment
+Label	links to SidebarNvimLabel
+Normal	links to SidebarNvimNormal
+Keyword	links to SidebarNvimKeyword
+SidebarNvimComment	links to SidebarNvimDatetimeClockName
+SidebarNvimNormal	links to SidebarNvimDatetimeClockValue
+diffAdded	links to SidebarNvimGitStatusDiffAdded
+SidebarNvimNormal	links to SidebarNvimGitStatusFileName
+diffRemoved	links to SidebarNvimGitStatusDiffRemoved
+SidebarNvimSectionTitle	links to SidebarNvimGitStatusFileIcon
+SidebarNvimLineNr	links to SidebarNvimLspDiagnosticsLineNumber
+LspDiagnosticsDefaultInformation	links to SidebarNvimLspDiagnosticsInfo
+LspDiagnosticsDefaultWarning	links to SidebarNvimLspDiagnosticsWarning
+LspDiagnosticsDefaultHint	links to SidebarNvimLspDiagnosticsHint
+LspDiagnosticsDefaultError	links to SidebarNvimLspDiagnosticsError
+SidebarNvimLineNr	links to SidebarNvimLspDiagnosticsColNumber
+SidebarNvimLineNr	links to SidebarNvimBuffersNumber
+SidebarNvimSectionTitle	links to SidebarNvimBuffersActive
+GitSignsChange	links to GitSignsChangedelete
+GitSignsDelete	links to GitSignsTopdelete
+GitSignsAdd	links to GitSignsUntracked
+GitSignsAdd	links to GitSignsAddNr
+GitSignsChange	links to GitSignsChangeNr
+GitSignsDelete	links to GitSignsDeleteNr
+GitSignsChangeNr	links to GitSignsChangedeleteNr
+GitSignsDeleteNr	links to GitSignsTopdeleteNr
+GitSignsAddNr	links to GitSignsUntrackedNr
+DiffAdd	links to GitSignsAddLn
+DiffChange	links to GitSignsChangeLn
+GitSignsChangeLn	links to GitSignsChangedeleteLn
+GitSignsAddLn	links to GitSignsUntrackedLn
+DiffAdd	links to GitSignsAddPreview
+DiffDelete	links to GitSignsDeletePreview
+NonText	links to GitSignsCurrentLineBlame
+TermCursor	links to GitSignsAddInline
+TermCursor	links to GitSignsDeleteInline
+TermCursor	links to GitSignsChangeInline
+GitSignsAddInline	links to GitSignsAddLnInline
+GitSignsChangeInline	links to GitSignsChangeLnInline
+GitSignsDeleteInline	links to GitSignsDeleteLnInline
+DiffDelete	links to GitSignsDeleteVirtLn
+GitSignsDeleteLnInline	links to GitSignsDeleteVirtLnInLine
+GitSignsDeleteVirtLn	links to GitSignsVirtLnum
+ColorColumn	links to ChatGPTSelectedMessage
+Visual	links to NvimSurroundHighlight
+NoiceCmdlinePopupBorderSearch	links to NoiceCmdlinePopupTitleSearch
+DiagnosticSignWarn	links to NoiceCmdlinePopupBorderSearch
+NoiceCmdlineIcon	links to NoiceCmdlineIconFilter
+DiagnosticSignInfo	links to NoiceCmdlineIcon
+NoiceCmdlinePopupBorder	links to NoiceCmdlinePopupBorderFilter
+DiagnosticSignInfo	links to NoiceCmdlinePopupBorder
+DiagnosticSignInfo	links to NoiceCmdlinePopupTitle
+NoiceCmdlineIcon	links to NoiceCmdlineIconHelp
+NoiceCmdlinePopupBorderHelp	links to NoiceCmdlinePopupTitleHelp
+NoiceCmdlinePopupBorder	links to NoiceCmdlinePopupBorderHelp
+Cursor	links to NoiceCursor
+DiagnosticVirtualTextInfo	links to NoiceFormatLevelInfo
+Title	links to NoiceLspProgressClient
+NonText	links to NoiceLspProgressTitle
+Constant	links to NoiceLspProgressSpinner
+DiagnosticVirtualTextError	links to NoiceFormatLevelError
+DiagnosticVirtualTextWarn	links to NoiceFormatLevelWarn
+DiagnosticVirtualTextInfo	links to NoiceVirtualText
+NonText	links to NoiceFormatLevelOff
+NonText	links to NoiceFormatLevelTrace
+NonText	links to NoiceFormatLevelDebug
+Title	links to NoiceFormatTitle
+Visual	links to NoiceFormatConfirmDefault
+CursorLine	links to NoiceFormatConfirm
+Special	links to NoiceFormatDate
+NonText	links to NoiceFormatKind
+NonText	links to NoiceFormatEvent
+CursorLine	links to NoiceFormatProgressTodo
+FloatBorder	links to NoiceSplitBorder
+NormalFloat	links to NoiceSplit
+PmenuThumb	links to NoiceScrollbarThumb
+PmenuSbar	links to NoiceScrollbar
+PmenuSel	links to NoicePopupmenuSelected
+Special	links to NoicePopupmenuMatch
+FloatBorder	links to NoicePopupmenuBorder
+Pmenu	links to NoicePopupmenu
+FloatBorder	links to NoicePopupBorder
+MsgArea	links to NoiceMini
+DiagnosticSignInfo	links to NoiceConfirmBorder
+Normal	links to NoiceConfirm
+Normal	links to NoiceCmdlinePopup
+Title	links to NoiceCmdlinePrompt
+MsgArea	links to NoiceCmdline
+DiagnosticSignWarn	links to NoiceCmdlineIconSearch
+NoiceCmdlineIcon	links to NoiceCmdlineIconCmdline
+NoiceCmdlinePopupBorder	links to NoiceCmdlinePopupBorderCmdline
+NoiceCmdlinePopupBorderCmdline	links to NoiceCmdlinePopupTitleCmdline
+NormalFloat	links to NoicePopup
+NoiceCmdlineIcon	links to NoiceCmdlineIconCalculator
+NoiceCmdlinePopupBorder	links to NoiceCmdlinePopupBorderCalculator
+NoiceCmdlinePopupBorderCalculator	links to NoiceCmdlinePopupTitleCalculator
+NoiceCmdlinePopupBorderFilter	links to NoiceCmdlinePopupTitleFilter
+Comment	links to NotifyLogTime
+Special	links to NotifyLogTitle
+Comment	links to TelescopeParent
+Comment	links to CopilotAnnotation
+Comment	links to CopilotSuggestion
+WarningMsg	links to goCoveragePartial
+Error	links to goCoverageUncovered
+String	links to goCoverageCovered
+WarningMsg	links to LspCodeLensText
+WarningMsg	links to LspCodeLensSign
+Statement	links to helpHeadline
+PreProc	links to helpSectionDelim
+Ignore	links to helpIgnore
+Comment	links to helpExample
+Ignore	links to helpBar
+Identifier	links to helpHyperTextJump
+Ignore	links to helpStar
+String	links to helpHyperTextEntry
+Ignore	links to helpBacktick
+Identifier	links to helpVim
+Type	links to helpOption
+PreProc	links to helpHeader
+Todo	links to helpNote
+Todo	links to helpWarning
+Todo	links to helpDeprecated
+Special	links to helpSpecial
+Comment	links to helpComment
+Constant	links to helpConstant
+String	links to helpString
+Character	links to helpCharacter
+Number	links to helpNumber
+Boolean	links to helpBoolean
+Float	links to helpFloat
+Identifier	links to helpIdentifier
+Function	links to helpFunction
+Statement	links to helpStatement
+Conditional	links to helpConditional
+Repeat	links to helpRepeat
+Label	links to helpLabel
+Operator	links to helpOperator
+Keyword	links to helpKeyword
+Exception	links to helpException
+PreProc	links to helpPreProc
+Include	links to helpInclude
+Define	links to helpDefine
+Macro	links to helpMacro
+PreCondit	links to helpPreCondit
+Type	links to helpType
+StorageClass	links to helpStorageClass
+Structure	links to helpStructure
+Typedef	links to helpTypedef
+SpecialChar	links to helpSpecialChar
+Tag	links to helpTag
+Delimiter	links to helpDelimiter
+SpecialComment	links to helpSpecialComment
+Debug	links to helpDebug
+Underlined	links to helpUnderlined
+Error	links to helpError
+Todo	links to helpTodo
+String	links to helpURL
+Added	links to helpDiffAdded
+Changed	links to helpDiffChanged
+Removed	links to helpDiffRemoved
