@@ -1,0 +1,24 @@
+session_name: looq-webservice
+start_directory: /Users/cameronbailey/looq/webservice
+windows:
+  - window_name: dev window
+    layout: main-horizontal
+    options:
+      main-pane-height: 77%
+    panes:
+      - shell_command:
+          - nvim .
+      - shell_command:
+          - clear
+          - /Users/cameronbailey/bin/maven_walkthrough.sh
+        focus: true
+      - shell_command:
+  - window_name: test window
+    layout: main-horizontal
+    options:
+      main-pane-height: 77%
+    panes:
+      - shell_command:
+          - cd src/test/java/com/limarai/webservice
+          - nvim .
+      - shell_command: mvn test

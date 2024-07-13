@@ -80,7 +80,6 @@ $sudo\
 $cmd_duration\
 $line_break\
 $jobs\
-$time\
 $status\
 $container\
 $shell\
@@ -92,7 +91,7 @@ $shell\
 # [└─>](bold green) """
 
 
-right_format = """$battery"""
+right_format = """$battery$time"""
 
 
 ################################################################################
@@ -104,11 +103,11 @@ description = "Display symbol for remote Git server"
 command = """
 GIT_REMOTE=$(command git ls-remote --get-url 2> /dev/null)
 if [[ "$GIT_REMOTE" =~ "github" ]]; then
-    GIT_REMOTE_SYMBOL=" "
+    GIT_REMOTE_SYMBOL="   "
 elif [[ "$GIT_REMOTE" =~ "gitlab" ]]; then
     GIT_REMOTE_SYMBOL=" "
 elif [[ "$GIT_REMOTE" =~ "bitbucket" ]]; then
-    GIT_REMOTE_SYMBOL=" "
+    GIT_REMOTE_SYMBOL="   "
 elif [[ "$GIT_REMOTE" =~ "git" ]]; then
     GIT_REMOTE_SYMBOL=" "
 else
@@ -214,7 +213,7 @@ format = '\[[⏱ $duration]($style)\]'
 style = 'yellow'
 
 [memory_usage]
-format = '\[$symbol[${ram}( | ${swap})]($style)\]'
+format = ' $symbol[${ram}( | ${swap})]($style)'
 threshold = 70
 style = "bold dimmed white"
 disabled = false
@@ -223,7 +222,7 @@ disabled = false
 time_format = "%T"
 format = "🕙 $time($style) "
 style = "bright-white"
-disabled = true
+disabled = false 
 
 [username]
 format = '\[[$user]($style)\]'
@@ -250,7 +249,9 @@ read_only = " 󰌾"
 "Music" = "  "
 "Pictures" = "  "
 # "acbailey" = " "
-"acbailey" = " "
+"cameronbailey" = " "
+"looq" = " "
+"dotfiles" = " "
 "Developer" = "󰲋 "
 
 
@@ -268,6 +269,8 @@ disabled = false
 [os.symbols]
 Arch = "   "
 Debian = "   "
+Macos = "  🍏  "
+# Macos = " "
 
 [python]
 format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
@@ -291,7 +294,7 @@ style = "bold green"
 
 [java]
 format = '[$symbol($version)]($style)'
-symbol = " "
+symbol = "using  "
 
 [c]
 symbol = " "
@@ -301,18 +304,19 @@ symbol = " "
 
 [docker_context]
 symbol = " "
-format = '\[[$symbol$context]($style)\]'
+format = 'via [🐳 $context ]($style)'
 
 [golang]
 symbol = " "
-format = '\[[$symbol($version)]($style)\]'
+format = '[$symbol($version)]($style)\'
 
 [kotlin]
 symbol = " "
 format = '\[[$symbol($version)]($style)\]'
 
 [lua]
-symbol = " "
+# symbol = " "
+symbol = "💣"
 
 # [memory_usage]
 # symbol = "󰍛 "

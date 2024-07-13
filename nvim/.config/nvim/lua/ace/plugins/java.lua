@@ -25,11 +25,13 @@ return {
 
       -- Get workspace directory for each project based on name
       local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-      local workspace_dir = "/home/acbailey/Developer/java" -- .. project_name
+      local workspace_dir = "/Users/cameronbailey/looq" -- .. project_name
+      -- local workspace_dir = "/home/acbailey/Developer/java" -- .. project_name
 
       -- Set proper Java executable
-      local java_cmd = "/usr/lib/jvm/java-21-openjdk/bin/java"
-
+      -- local java_cmd = "/usr/lib/jvm/java-21-openjdk/bin/java"
+      local java_cmd = "/Users/cameronbailey/.sdkman/candidates/java/current/bin/java"
+      --
       -- Mason registry and language server path from mason
       local mason_registry = require("mason-registry")
       local jdtls_path = mason_registry.get_package("jdtls"):get_install_path()
@@ -90,6 +92,15 @@ return {
 
         settings = {
           java = {
+            format = {
+              settings = {
+                -- Use Google Java style guidelines for formatting
+                -- To use, make sure to download the file from https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
+                -- and place it in the ~/.local/share/eclipse directory
+                url = "/.local/share/eclipse/eclipse-java-google-style.xml",
+                profile = "GoogleStyle",
+              },
+            },
             -- jdt = {
             --   ls = {
             --     vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m"
@@ -101,17 +112,17 @@ return {
             configuration = {
               updateBuildConfiguration = "interactive",
               runtimes = {
-                {
-                  name = "JavaSE-11",
-                  path = "/usr/lib/jvm/java-11-openjdk/",
-                },
-                {
-                  name = "JavaSE-17",
-                  path = "/usr/lib/jvm/java-17-openjdk/",
-                },
+                -- {
+                --   name = "JavaSE-11",
+                --   path = "/usr/lib/jvm/java-11-openjdk/",
+                -- },
+                -- {
+                --   name = "JavaSE-17",
+                --   path = "/usr/lib/jvm/java-17-openjdk/",
+                -- },
                 {
                   name = "JavaSE-21",
-                  path = "/usr/lib/jvm/java-21-openjdk/",
+                  path = "/Users/cameronbailey/.sdkman/candidates/java/current",
                 },
               },
             },
@@ -240,3 +251,31 @@ return {
     end,
   },
 }
+
+-- local on_attach = function(client, bufnr)
+--   -- Regular Neovim LSP client keymappings
+--   local bufopts = { noremap=true, silent=true, buffer=bufnr }
+--   nnoremap('gD', vim.lsp.buf.declaration, bufopts, "Go to declaration")
+--   nnoremap('gd', vim.lsp.buf.definition, bufopts, "Go to definition")
+--   nnoremap('gi', vim.lsp.buf.implementation, bufopts, "Go to implementation")
+--   nnoremap('K', vim.lsp.buf.hover, bufopts, "Hover text")
+--   nnoremap('<C-k>', vim.lsp.buf.signature_help, bufopts, "Show signature")
+--   nnoremap('<space>wa', vim.lsp.buf.add_workspace_folder, bufopts, "Add workspace folder")
+--   nnoremap('<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts, "Remove workspace folder")
+--   nnoremap('<space>wl', function()
+--     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+--   end, bufopts, "List workspace folders")
+--   nnoremap('<space>D', vim.lsp.buf.type_definition, bufopts, "Go to type definition")
+--   nnoremap('<space>rn', vim.lsp.buf.rename, bufopts, "Rename")
+--   nnoremap('<space>ca', vim.lsp.buf.code_action, bufopts, "Code actions")
+--   vim.keymap.set('v', "<space>ca", "<ESC><CMD>lua vim.lsp.buf.range_code_action()<CR>",
+--     { noremap=true, silent=true, buffer=bufnr, desc = "Code actions" })
+--   nnoremap('<space>f', function() vim.lsp.buf.format { async = true } end, bufopts, "Format file")
+--
+--   -- Java extensions provided by jdtls
+--   nnoremap("<C-o>", jdtls.organize_imports, bufopts, "Organize imports")
+--   nnoremap("<space>ev", jdtls.extract_variable, bufopts, "Extract variable")
+--   nnoremap("<space>ec", jdtls.extract_constant, bufopts, "Extract constant")
+--   vim.keymap.set('v', "<space>em", [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]],
+--     { noremap=true, silent=true, buffer=bufnr, desc = "Extract method" })
+-- end
