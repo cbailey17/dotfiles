@@ -10,6 +10,7 @@ keymap.set({ "n", "v" }, "<leader>wq", ":wq<CR>", { desc = "Write and quit" })
 -- Editor
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 keymap.set({ "n", "v" }, ";", ":", opts)
+keymap.set({ "n", "v" }, ":", ";", opts)
 
 -- Yank and paste into system clipboard
 keymap.set({ "n", "v" }, "<leader>y", [["+y]])
@@ -36,18 +37,14 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>bn", ":bn<cr>", { desc = "Go to next buffer" })
 keymap.set("n", "<leader>bp", ":bp<cr>", { desc = "Go to previous buffer" })
 keymap.set("n", "<leader>bx", ":bd<cr>", { desc = "Close current buffer" })
+keymap.set("n", "<leader>bX", ":bd!<cr>", { desc = "Close current buffer" })
 
+keymap.set("n", "<M-6>", "<cmd>b#<CR>", { desc = "Go to alternate file" })
 -- Undo tree
 keymap.set("n", "<leader><F5>", vim.cmd.UndotreeToggle)
 
--- Code actions
--- Python -------------------------------------------------------------------------------------
-
--- Define a function to run the current Python file
-local function run_current_python_file()
-  local file = vim.fn.expand("%")
-  vim.cmd("!python3 " .. file)
-end
-
--- Set the keymap to run the current Python file
-keymap.set("n", "<leader><leader>r", run_current_python_file, { noremap = true, silent = true })
+-- Start up nvim dap
+keymap.set("n", "<leader>dl", "<cmd>lua require('dap')<CR>", { desc = "Load nvim dap" })
+keymap.set("n", "<leader>xx", function()
+  require("dapui").close()
+end, { desc = "Close dap ui" })

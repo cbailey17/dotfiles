@@ -26,7 +26,7 @@ return {
   tab_bar_at_bottom = true,
   window_decorations = "INTEGRATED_BUTTONS|RESIZE|NONE",
   color_scheme = "Tokyo Night",
-  window_background_opacity = 0.90,
+  window_background_opacity = 0.80,
   hide_tab_bar_if_only_one_tab = false,
   macos_window_background_blur = 8,
   use_dead_keys = false,

@@ -1,0 +1,20 @@
+session_name: looq-webapp
+start_directory: /Users/cameronbailey/looq/webapp
+windows:
+  - window_name: dev window
+    layout: main-horizontal
+    options:
+      main-pane-height: 77%
+    panes:
+      - shell_command:
+          - nvim .
+        focus: true
+      - shell_command: npm run dev
+  - window_name: api window
+    layout: main-horizontal
+    options:
+      main-pane-height: 85%
+    panes:
+      - shell_command:
+          - cd ~/Developer/rest-collections && nvim .
+      - shell_command:

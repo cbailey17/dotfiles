@@ -1,5 +1,5 @@
 return {
-  "kndndrj/nvim-dbee",
+  "looqingGood/nvim-dbee",
   lazy = true,
   dependencies = {
     "MunifTanjim/nui.nvim",

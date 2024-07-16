@@ -12,7 +12,8 @@ return {
         buffer_close_icon = "󰅖",
         -- modified_icon = "●",
         modified_icon = " ",
-        close_icon = "",
+        -- close_icon = "",
+        close_icon = "",
         left_trunc_marker = "",
         right_trunc_marker = "",
         max_name_length = 18,
@@ -31,24 +32,13 @@ return {
         persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
         -- can also be a table containing 2 custom separators
         -- [focused and unfocused]. eg: { '|', '|' }
-        separator_style = "padded_slant",
+        separator_style = "thin",
         enforce_regular_tabs = false,
         hover = {
           enabled = true,
           delay = 200,
           reveal = { "close" },
         },
-        sort_by = "insert_after_current",
-        -- offsets = {
-        --   {
-        --     filetype = "neo-tree",
-        --     text = function()
-        --       return vim.fn.getcwd()
-        --     end,
-        --     highlight = "Directory",
-        --     text_align = "left",
-        --   },
-        -- },
       },
       highlights = {
         buffer_selected = {

@@ -9,8 +9,8 @@ return {
   opts = {
     workspaces = {
       {
-        name = "CloudNine",
-        path = "/mnt/c/Users/abailey/Documents/CloudNine",
+        name = "Vision",
+        path = "/Users/cameronbailey/Documents/Vision",
       },
     },
     log_level = vim.log.levels.INFO,
@@ -123,7 +123,7 @@ return {
     ---@param url string
     follow_url_func = function(url)
       -- Open the URL in the default web browser.
-      vim.fn.jobstart({"open", url})  -- Mac OS
+      vim.fn.jobstart({ "open", url }) -- Mac OS
       -- vim.fn.jobstart({"xdg-open", url})  -- linux
     end,
 
@@ -192,9 +192,9 @@ return {
     -- Optional, configure additional syntax highlighting / extmarks.
     -- This requires you have `conceallevel` set to 1 or 2. See `:help conceallevel` for more details.
     ui = {
-      enable = true,  -- set to false to disable all additional syntax features
-      update_debounce = 200,  -- update delay after a text change (in milliseconds)
-      max_file_length = 5000,  -- disable UI features for files with more than this many lines
+      enable = true,       -- set to false to disable all additional syntax features
+      update_debounce = 200, -- update delay after a text change (in milliseconds)
+      max_file_length = 5000, -- disable UI features for files with more than this many lines
       -- Define how various check-boxes are displayed
       checkboxes = {
         -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
@@ -239,7 +239,7 @@ return {
       -- The default folder to place images in via `:ObsidianPasteImg`.
       -- If this is a relative path it will be interpreted as relative to the vault root.
       -- You can always override this per image by passing a full path to the command instead of just a filename.
-      img_folder = "assets/imgs",  -- This is the default
+      img_folder = "assets/imgs", -- This is the default
       -- A function that determines the text to insert in the note when pasting an image.
       -- It takes two arguments, the `obsidian.Client` and an `obsidian.Path` to the image file.
       -- This is the default implementation.
@@ -251,5 +251,5 @@ return {
         return string.format("![%s](%s)", path.name, path)
       end,
     },
-  }
+  },
 }

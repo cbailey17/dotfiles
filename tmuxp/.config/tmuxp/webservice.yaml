@@ -22,3 +22,11 @@ windows:
           - cd src/test/java/com/limarai/webservice
           - nvim .
       - shell_command: mvn test
+  - window_name: db window
+    layout: main-horizontal
+    options:
+      main-pane-height: 85%
+    panes:
+      - shell_command:
+          - nvim -c "lua require('dbee').toggle()"
+      - shell_command: psql -U cameronbailey -d postgres

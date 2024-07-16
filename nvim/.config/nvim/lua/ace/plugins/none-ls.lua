@@ -2,7 +2,7 @@ return {
   "nvimtools/none-ls.nvim",
   lazy = false,
   dependencies = {
-    'nvim-lua/plenary.nvim',
+    "nvim-lua/plenary.nvim",
   },
   config = function()
     local null_ls = require("null-ls")
@@ -21,8 +21,7 @@ return {
       end
     end
 
-
-    require('null-ls').setup({
+    require("null-ls").setup({
       sources = {
         -- python
         null_ls.builtins.diagnostics.mypy,
@@ -38,9 +37,9 @@ return {
         -- other
         null_ls.builtins.completion.spell,
       },
-      on_attach = on_attach
+      on_attach = on_attach,
     })
 
-    vim.keymap.set("n", "<leader>cu", vim.lsp.buf.format, { desc = "Format file" })
+    vim.keymap.set("n", ",fm", vim.lsp.buf.format, { desc = "Format file" })
   end,
 }

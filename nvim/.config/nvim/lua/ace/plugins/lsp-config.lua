@@ -1,12 +1,18 @@
 return {
   {
-    "williamboman/mason.nvim",
-    dependencies = {
-      -- TODO research fidget
-      -- "j-hui/fidget.nvim",
-    },
+    "nvimdev/lspsaga.nvim",
+    event = "LspAttach",
     config = function()
-      -- require("fidget").setup({})
+      require("lspsaga").setup({})
+    end,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter", -- optional
+      "nvim-tree/nvim-web-devicons",  -- optional
+    },
+  },
+  {
+    "williamboman/mason.nvim",
+    config = function()
       require("mason").setup({
         ui = {
           border = "rounded",
@@ -28,6 +34,8 @@ return {
           "pyright",
           "jdtls",
           "gopls",
+          "tsserver",
+          "shfmt",
         },
       })
     end,
@@ -39,6 +47,107 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       { "antosha417/nvim-lsp-file-operations", config = true },
       { "folke/neodev.nvim",                   opts = {} },
+      "b0o/schemastore.nvim",
+    },
+    opts = {
+      ---@type lspconfig.options
+      servers = {
+        cssls = {},
+        tailwindcss = {
+          root_dir = function(...)
+            return require("lspconfig.util").root_pattern(".git")(...)
+          end,
+        },
+        tsserver = {
+          root_dir = function(...)
+            return require("lspconfig.util").root_pattern(".git")(...)
+          end,
+          settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "literal",
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+          },
+        },
+        html = {},
+        yamlls = {
+          settings = {
+            yaml = {},
+          },
+        },
+        lua_ls = {
+          -- enabled = false,
+          single_file_support = true,
+          settings = {
+            Lua = {
+              workspace = {
+                checkThirdParty = false,
+              },
+              completion = {
+                workspaceWord = true,
+                callSnippet = "Both",
+              },
+              misc = {
+                parameters = {
+                  -- "--log-level=trace",
+                },
+              },
+              hint = {
+                enable = true,
+                paramType = true,
+              },
+              -- doc = {
+              -- 	privateName = { "^_" },
+              -- },
+              type = {
+                castNumberToInteger = true,
+              },
+              diagnostics = {
+                -- enable = false,
+                groupFileStatus = {
+                  ["ambiguity"] = "Opened",
+                  ["await"] = "Opened",
+                  ["codestyle"] = "None",
+                  ["duplicate"] = "Opened",
+                  ["global"] = "Opened",
+                  ["luadoc"] = "Opened",
+                  ["redefined"] = "Opened",
+                  ["strict"] = "Opened",
+                  ["strong"] = "Opened",
+                  ["type-check"] = "Opened",
+                  ["unbalanced"] = "Opened",
+                  ["unused"] = "Opened",
+                },
+                unusedLocalExclude = { "_*" },
+              },
+              format = {
+                enable = false,
+                defaultConfig = {
+                  indent_style = "space",
+                  indent_size = "2",
+                  continuation_indent_size = "2",
+                },
+              },
+            },
+          },
+        },
+      },
     },
     config = function()
       local lspconfig = require("lspconfig")
@@ -67,6 +176,7 @@ return {
         ["lua_ls"] = false, -- we use stylua
         ["gopls"] = true,
         ["bashls"] = false,
+        ["shfmt"] = true,
       }
 
       -- require("lspconfig").jdtls.setup {
@@ -74,6 +184,46 @@ return {
       --     bundles = require("spring_boot").java_extensions(),
       --   },
       -- }
+      lspconfig.emmet_ls.setup({
+        -- on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = {
+          "css",
+          "html",
+          "javascript",
+          "javascriptreact",
+          "typescriptreact",
+          "less",
+          "sass",
+          "scss",
+        },
+        init_options = {
+          html = {
+            options = {
+              -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+              ["bem.enabled"] = true,
+            },
+          },
+        },
+      })
+      lspconfig.jsonls.setup({
+        settings = {
+          json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
+          },
+          yaml = {
+            schemaStore = {
+              -- You must disable built-in schemaStore support if you want to use
+              -- this plugin and its advanced options like `ignore`.
+              enable = false,
+              -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+              url = "",
+            },
+            schemas = require("schemastore").yaml.schemas(),
+          },
+        },
+      })
 
       local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
@@ -132,6 +282,8 @@ return {
           capabilities = capabilities,
           handlers = handlers,
         }
+        if server == "tailwindcss" then
+        end
         if server ~= "jdtls" then
           lspconfig[server].setup(opts)
         end

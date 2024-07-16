@@ -1,5 +1,6 @@
 return {
   "nvim-tree/nvim-tree.lua",
+  lazy = true,
   dependencies = "nvim-tree/nvim-web-devicons",
   config = function()
     local nvimtree = require("nvim-tree")
@@ -15,6 +16,7 @@ return {
       :hi      NvimTreeOpenFolderIcon    guifg=#2cf9ed
       :hi      NvimTreeEmptyFolderName    guifg=#2cf9ed
       :hi      NvimTreeOpenedFolderName    guifg=#2cf9ed
+      :hi      NvimTreeCursorLineNr    guifg=#cd0951
     ]])
 
     nvimtree.setup({

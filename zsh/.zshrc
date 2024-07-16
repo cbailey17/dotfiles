@@ -34,6 +34,32 @@ zle     -N             sesh-sessions
 bindkey -M emacs '\es' sesh-sessions
 bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
+
+# Move backward by one word
+bindkey '^[h' backward-word
+
+# Move forward by one word
+bindkey '^[l' forward-word
+
+# Move to the beginning of the line
+bindkey '^[j' beginning-of-line
+
+# Move to the end of the line
+bindkey '^[k' end-of-line
+
+# Delete to the beginning of the line
+kill-to-beginning-of-line() {
+  zle backward-kill-line
+}
+zle -N kill-to-beginning-of-line
+bindkey '^[H' kill-to-beginning-of-line
+
+# Delete to the end of the line
+kill-to-end-of-line() {
+  zle kill-line
+}
+zle -N kill-to-end-of-line
+bindkey '^[L' kill-to-end-of-line
   
 EDITOR='nvim'
 
@@ -45,7 +71,8 @@ alias fd="fdfind"
 alias cat="bat"
 alias vv="nvim ."
 alias v="nvim"
-alias tn="tmux new -s (pwd | sed 's/.*\///g')"
+alias tn="tmux new -s ${PWD##*/}"
+alias t="tmux"
 
 # Define widgets
 zle -N insert-unambiguous-or-complete
@@ -99,6 +126,17 @@ export SPRING_PROFILES_ACTIVE=looqlocalhost
 export SPRING_PROFILES_ACTIVE=looqdev
 # export SPRING_PROFILES_ACTIVE=looqprod
 
+export PG_USER=cameronbailey
+export PG_PASSWORD=ACBacb0117!!
+
+export DBEE_CONNECTIONS='[
+    {
+        "name": "postgres",
+        "url": "postgres://cameronbailey:ACBacb0117!!@localhost:5432/postgres?sslmode=disable",
+        "type": "postgresql"
+    }
+]'
+
 neofetch
 
 # Key bindings
@@ -111,6 +149,12 @@ bindkey -s "^O" "nvim \$(fzf)^M"
 bindkey -s "^[[24~" "nvim ~/.config/nvim/lua/ace/plugins^M"
 bindkey -s -M viins "^O" "nvim \$(fzf)^M"
 bindkey -s -M emacs "^O" "nvim \$(fzf)^M"
+
+# Bind F1 to "sdk use java 11.0.23-amzn && tmuxp load /Users/cameronbailey/dotfiles/tmuxp/.config/tmuxp/webservice.yaml"
+bindkey -s "^[OP" "sdk use java 11.0.23-amzn && tmuxp load /Users/cameronbailey/dotfiles/tmuxp/.config/tmuxp/webservice.yaml^M"
+
+# Bind F2 to "tmuxp load /Users/cameronbailey/dotfiles/tmuxp/.config/tmuxp/webapp.yaml"
+bindkey -s "^[OQ" "tmuxp load /Users/cameronbailey/dotfiles/tmuxp/.config/tmuxp/webapp.yaml^M"
 
 # Source scripts and start up other
 eval "$(starship init zsh)"

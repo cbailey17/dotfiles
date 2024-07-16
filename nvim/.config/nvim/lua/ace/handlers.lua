@@ -1,7 +1,7 @@
 local M = {}
 local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 local signature_cfg = {
-  bind = true,  -- This is mandatory, otherwise border config won't get registered.
+  bind = true,  -- This is mandatory, otherwise border config won't get added.
   -- If you want to hook lspsaga or other signature handler, pls set to false
   doc_lines = 2, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
   -- set to 0 if you DO NOT want any API comments be shown

@@ -1,29 +1,39 @@
 return {
   {
-    "hrsh7th/cmp-nvim-lsp"
+    "hrsh7th/cmp-nvim-lsp",
   },
   {
     "zbirenbaum/copilot-cmp",
     config = function()
       require("copilot_cmp").setup()
-    end
+    end,
   },
   {
     "L3MON4D3/LuaSnip",
     dependencies = {
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
-      'andersevenrud/cmp-tmux',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
-      'zbirenbaum/copilot-cmp',
+      "andersevenrud/cmp-tmux",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "zbirenbaum/copilot-cmp",
       "onsails/lspkind.nvim", -- vs-code like pictograms
-      "danymat/neogen"
+      "danymat/neogen",
     },
   },
   {
     "hrsh7th/nvim-cmp",
+    dependencies = {
+      {
+        "MattiasMTS/cmp-dbee",
+        dependencies = {
+          { "kndndrj/nvim-dbee" },
+        },
+        ft = "sql", -- optional but good to have
+        opts = {}, -- needed
+      },
+    },
     config = function()
       local cmp = require("cmp")
       require("luasnip.loaders.from_vscode").lazy_load()
@@ -31,9 +41,12 @@ return {
       local neogen = require("neogen")
 
       local has_words_before = function()
-        if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+        if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+          return false
+        end
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+        return col ~= 0
+            and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
       end
       cmp.setup({
         snippet = {
@@ -71,29 +84,29 @@ return {
           { name = "luasnip" }, -- For luasnip users.
           { name = "tmux" },
           { name = "copilot" },
+          { name = "cmp-dbee" },
         }, {
           { name = "buffer" },
         }),
       })
 
-
       -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-      cmp.setup.cmdline({ '/', '?' }, {
+      cmp.setup.cmdline({ "/", "?" }, {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
-          { name = 'buffer' }
-        }
+          { name = "buffer" },
+        },
       })
 
       -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-      cmp.setup.cmdline(':', {
+      cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
-          { name = 'path' }
+          { name = "path" },
         }, {
-          { name = 'cmdline' }
+          { name = "cmdline" },
         }),
-        matching = { disallow_symbol_nonprefix_matching = false }
+        matching = { disallow_symbol_nonprefix_matching = false },
       })
     end,
   },

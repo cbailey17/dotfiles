@@ -1,16 +1,4 @@
 return {
-  -- {
-  --   -- Spring boot plugin
-  --   "JavaHello/spring-boot.nvim",
-  --   ft = "java",
-  --   dependencies = {
-  --     "mfussenegger/nvim-jdtls",
-  --     -- "ibhagwan/fzf-lua",
-  --   },
-  --   config = function()
-  --     require("spring_boot").setup({})
-  --   end,
-  -- },
   {
     "mfussenegger/nvim-jdtls",
     ft = { "java" },
@@ -24,18 +12,58 @@ return {
       local extendedClientCapabilities = jdtls.extendedClientCapabilities
 
       -- Get workspace directory for each project based on name
+      local root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew", "pom.xml" })
       local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-      local workspace_dir = "/Users/cameronbailey/looq" -- .. project_name
+      local workspace_dir = "/Users/cameronbailey/looq" .. root_dir
       -- local workspace_dir = "/home/acbailey/Developer/java" -- .. project_name
 
       -- Set proper Java executable
       -- local java_cmd = "/usr/lib/jvm/java-21-openjdk/bin/java"
-      local java_cmd = "/Users/cameronbailey/.sdkman/candidates/java/current/bin/java"
+      local java_cmd = "/Users/cameronbailey/.sdkman/candidates/java/21.0.3-tem/bin/java"
       --
       -- Mason registry and language server path from mason
       local mason_registry = require("mason-registry")
       local jdtls_path = mason_registry.get_package("jdtls"):get_install_path()
       local java_agent = jdtls_path .. "/lombok.jar"
+
+      -- run debug
+      local function get_test_runner(test_name, debug)
+        if debug then
+          return 'mvn test -Dmaven.surefire.debug -Dtest="' .. test_name .. '"'
+        end
+        return 'mvn test -Dtest="' .. test_name .. '"'
+      end
+
+      local function run_java_test_method(debug)
+        local utils = require("ace.utils")
+        local method_name = utils.get_current_full_method_name("\\#")
+        vim.cmd("term " .. get_test_runner(method_name, debug))
+      end
+
+      local function run_java_test_class(debug)
+        local utils = require("ace.utils")
+        local class_name = utils.get_current_full_class_name()
+        vim.cmd("term " .. get_test_runner(class_name, debug))
+      end
+
+      local function get_spring_boot_runner(profile, debug)
+        local debug_param = ""
+        if debug then
+          debug_param =
+          ' -Dspring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005" '
+        end
+
+        local profile_param = ""
+        if profile then
+          profile_param = " -Dspring-boot.run.profiles=" .. profile .. " "
+        end
+
+        return "mvn spring-boot:run " .. profile_param .. debug_param
+      end
+
+      local function run_spring_boot(debug)
+        vim.cmd("tabnew | term " .. get_spring_boot_runner(method_name, debug))
+      end
 
       -- Get debugging and testing packages ready
       local bundles = {
@@ -52,8 +80,6 @@ return {
           "\n"
         )
       )
-      -- vim.list_extend(bundles, require("spring_boot").java_extensions())
-
       -- Main configuration table
       local config = {
         cmd = {
@@ -88,8 +114,6 @@ return {
           allow_incremental_sync = true,
         },
 
-        root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew", "pom.xml" }),
-
         settings = {
           java = {
             format = {
@@ -116,13 +140,13 @@ return {
                 --   name = "JavaSE-11",
                 --   path = "/usr/lib/jvm/java-11-openjdk/",
                 -- },
-                -- {
-                --   name = "JavaSE-17",
-                --   path = "/usr/lib/jvm/java-17-openjdk/",
-                -- },
+                {
+                  name = "JavaSE-11",
+                  path = "/Users/cameronbailey/.sdkman/candidates/java/11.0.23-amzn/",
+                },
                 {
                   name = "JavaSE-21",
-                  path = "/Users/cameronbailey/.sdkman/candidates/java/current",
+                  path = "/Users/cameronbailey/.sdkman/candidates/java/21.0.3-tem/",
                 },
               },
             },
@@ -146,12 +170,6 @@ return {
               parameterNames = {
                 enabled = "all", -- literals, all, none
               },
-            },
-            format = {
-              enabled = false,
-              -- settings = {
-              --   profile = "asdf"
-              -- }
             },
             saveActions = {
               organizeImports = true,
@@ -204,6 +222,37 @@ return {
                 { silent = true, desc = desc, buffer = bufnr, noremap = true }
               )
             end
+
+            vim.keymap.set("n", "<leader>tm", function()
+              run_java_test_method()
+            end)
+            vim.keymap.set("n", "<leader>TM", function()
+              run_java_test_method(true)
+            end)
+            vim.keymap.set("n", "<leader>tc", function()
+              run_java_test_class()
+            end)
+            vim.keymap.set("n", "<leader>TC", function()
+              run_java_test_class(true)
+            end)
+
+            require("which-key").add({
+              ["<leader>r"] = {
+                p = {
+                  function()
+                    run_spring_boot()
+                  end,
+                  "Run Spring Boot project",
+                },
+                d = {
+                  function()
+                    run_spring_boot(true)
+                  end,
+                  "Run Spring Boot debug",
+                },
+              },
+            })
+
             map("n", "<leader>Co", jdtls.organize_imports, "Organize Imports")
             map("n", "<leader>Cv", jdtls.extract_variable, "Extract Variable")
             map("n", "<leader>Cc", jdtls.extract_constant, "Extract Constant")
@@ -212,24 +261,12 @@ return {
             map("n", "<leader>Cu", "<Cmd>JdtUpdateConfig<CR>", "Update Config")
             map(
               "v",
-              "<leader>Cv",
-              "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>",
-              "Extract Variable"
-            )
-            map(
-              "v",
-              "<leader>Cc",
-              "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>",
-              "Extract Constant"
-            )
-            map(
-              "v",
               "<leader>Cm",
               "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>",
               "Extract Method"
             )
 
-            require("which-key").register({
+            require("which-key").add({
               ["<leader>de"] = { "<cmd>DapContinue<cr>", "[JDLTS] Show debug configurations" },
               ["<leader>ro"] = {
                 "<cmd>lua require'jdtls'.organize_imports()<cr>",
@@ -237,13 +274,13 @@ return {
               },
             })
             ---@diagnostic disable-next-line: missing-fields
-            -- jdtls.setup_dap({ hotcodereplace = "auto" })
-            -- -- Auto-detect main and setup dap config
-            -- require("jdtls.dap").setup_dap_main_class_configs({
-            --   config_overrides = {
-            --     vmArgs = "-Dspring.profiles.active=local",
-            --   },
-            -- })
+            jdtls.setup_dap({ hotcodereplace = "auto" })
+            -- Auto-detect main and setup dap config
+            require("jdtls.dap").setup_dap_main_class_configs({
+              config_overrides = {
+                vmArgs = "-Dspring.profiles.active=local",
+              },
+            })
           end
         end,
       }
