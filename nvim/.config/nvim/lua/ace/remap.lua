@@ -21,17 +21,17 @@ keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- incremen
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
 
 -- window management
-keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })     -- split window vertically
-keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })   -- split window horizontally
-keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })      -- make split windows equal width & height
+keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
+keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
+keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 
 -- Tab Management
-keymap.set("n", "<leader>tc", "<cmd>tabnew<CR>", { desc = "Open new tab" })                     -- open new tab
+keymap.set("n", "<leader>tc", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
 keymap.set("n", "<leader>tt", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
-keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })                     --  go to next tab
-keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })                 --  go to previous tab
-keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })              -- close current tab
+keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
+keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
+keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
 
 -- Buffer management
 keymap.set("n", "<leader>bn", ":bn<cr>", { desc = "Go to next buffer" })
@@ -46,5 +46,22 @@ keymap.set("n", "<leader><F5>", vim.cmd.UndotreeToggle)
 -- Start up nvim dap
 keymap.set("n", "<leader>dl", "<cmd>lua require('dap')<CR>", { desc = "Load nvim dap" })
 keymap.set("n", "<leader>xx", function()
-  require("dapui").close()
+	require("dapui").close()
 end, { desc = "Close dap ui" })
+
+-- keymap.set({"n", "v"}, "<leader>cp", )
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	group = vim.api.nvim_create_augroup("TS_add_missing_imports", { clear = true }),
+	desc = "TS_add_missing_imports",
+	pattern = { "*.ts" },
+	callback = function()
+		vim.lsp.buf.code_action({
+			apply = true,
+			context = {
+				only = { "source.addMissingImports.ts" },
+			},
+		})
+		vim.cmd("write")
+	end,
+})

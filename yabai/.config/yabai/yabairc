@@ -29,6 +29,7 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Karabiner-Elements$" manage=off
 yabai -m rule --add app="^Messages$" manage=off
+yabai -m rule --add app="^ChatGPT$" manage=off
 
 yabai -m space --focus prev        # move left
 yabai -m space --focus next

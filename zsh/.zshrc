@@ -1,4 +1,4 @@
-# If you come from bash you might have to change your $PATH.
+# iF YOU COME FROM bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -35,31 +35,7 @@ bindkey -M emacs '\es' sesh-sessions
 bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
 
-# Move backward by one word
-bindkey '^[h' backward-word
 
-# Move forward by one word
-bindkey '^[l' forward-word
-
-# Move to the beginning of the line
-bindkey '^[j' beginning-of-line
-
-# Move to the end of the line
-bindkey '^[k' end-of-line
-
-# Delete to the beginning of the line
-kill-to-beginning-of-line() {
-  zle backward-kill-line
-}
-zle -N kill-to-beginning-of-line
-bindkey '^[H' kill-to-beginning-of-line
-
-# Delete to the end of the line
-kill-to-end-of-line() {
-  zle kill-line
-}
-zle -N kill-to-end-of-line
-bindkey '^[L' kill-to-end-of-line
   
 EDITOR='nvim'
 
@@ -73,6 +49,9 @@ alias vv="nvim ."
 alias v="nvim"
 alias tn="tmux new -s ${PWD##*/}"
 alias t="tmux"
+alias zz="z .."
+alias ns="npm run start"
+alias lg="lazygit"
 
 # Define widgets
 zle -N insert-unambiguous-or-complete
@@ -110,7 +89,7 @@ function sesh-sessions() {
   }
 }
 
-
+export XDG_CONFIG_HOME="$HOME/.config"
  
 # Set GOPATH
 export GOPATH=$HOME/Developer/go
@@ -119,20 +98,24 @@ export GO111MODULE=on
 
 #Exports 
 export MARKETDATA_TOKEN="RDV0U3FPM2tBcWJIQlhjQThSd0NoWjY1Y1JrSHdhbUU4LWZXZ0NTWWF2bz0"
-export OPENAI_API_KEY="sk-proj-IJ170AwolhaSi1N6uMzRT3BlbkFJWWGj6DvBBQi5JTSGHGCW"
+export OPENAI_API_KEY="sk-proj-3CYc7ZWr7gLoFigBiNZrT3BlbkFJuJMuoQyaEzL4keKUcggR"
 
 # Spring configuration 
-export SPRING_PROFILES_ACTIVE=looqlocalhost
-export SPRING_PROFILES_ACTIVE=looqdev
+# export SPRING_PROFILES_ACTIVE=looqlocalhost
+export SPRING_PROFILES_ACTIVE=mweblocalhost
+# export SPRING_PROFILES_ACTIVE=looqdev
 # export SPRING_PROFILES_ACTIVE=looqprod
 
 export PG_USER=cameronbailey
 export PG_PASSWORD=ACBacb0117!!
+export PG_PORT=5432
+export PG_HOST=localhost
+export PG_NAME=looqai
 
 export DBEE_CONNECTIONS='[
     {
         "name": "postgres",
-        "url": "postgres://cameronbailey:ACBacb0117!!@localhost:5432/postgres?sslmode=disable",
+        "url": "postgres://cameronbailey:ACBacb0117!!@localhost:5432/looqai?sslmode=disable",
         "type": "postgresql"
     }
 ]'
@@ -156,10 +139,37 @@ bindkey -s "^[OP" "sdk use java 11.0.23-amzn && tmuxp load /Users/cameronbailey/
 # Bind F2 to "tmuxp load /Users/cameronbailey/dotfiles/tmuxp/.config/tmuxp/webapp.yaml"
 bindkey -s "^[OQ" "tmuxp load /Users/cameronbailey/dotfiles/tmuxp/.config/tmuxp/webapp.yaml^M"
 
+# Move backward by one word
+bindkey '\eh' backward-word
+
+# Move forward by one word
+bindkey '\el' forward-word
+
+# Move to the beginning of the line
+bindkey '^a' beginning-of-line
+
+# Move to the end of the line
+bindkey '^z' end-of-line
+
+# Delete to the beginning of the line
+kill-to-beginning-of-line() {
+  zle backward-kill-line
+}
+zle -N kill-to-beginning-of-line
+bindkey '^[H' kill-to-beginning-of-line
+
+# Delete to the end of the line
+kill-to-end-of-line() {
+  zle kill-line
+}
+zle -N kill-to-end-of-line
+bindkey '^[L' kill-to-end-of-line
+
 # Source scripts and start up other
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
+source $(brew --prefix nvm)/nvm.sh
 source /Users/cameronbailey/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 export HOMEBREW_PREFIX=/opt/homebrew
@@ -168,3 +178,12 @@ source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# bun completions
+[ -s "/Users/cameronbailey/.bun/_bun" ] && source "/Users/cameronbailey/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export GPG_TTY=$(tty)

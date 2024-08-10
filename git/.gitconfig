@@ -1,0 +1,49 @@
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[user]
+	name = CameronBailey
+  username = looqingGood
+	email = cbailey@looq.ai
+  signingkey = 70343460505C5B1E
+[merge]
+	tool = nvimdiff
+[core]
+	pager = delta
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+[delta]
+    navigate = true    
+    light = false      
+    side-by-side = true  
+    line-numbers = true   
+    features = decorations	 
+[delta "interactive"]
+    keep-plus-minus-markers = true
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax
+[mergetool]
+	keepBackup = false
+[push]
+	autoSetupRemote = true
+[commit]
+	template = /Users/cameronbailey/.config/git/commit_template
+	verbose = true
+	; gpgSign = true
+[pull]
+	rebase = false
+[gpg]
+	format = ssh
+	program = /opt/homebrew/bin/gpg
+[tag]
+	gpgSign = true
+[rerere]
+  enabled = true

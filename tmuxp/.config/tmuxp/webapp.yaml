@@ -9,7 +9,7 @@ windows:
       - shell_command:
           - nvim .
         focus: true
-      - shell_command: npm run dev
+      - shell_command: npm run start
   - window_name: api window
     layout: main-horizontal
     options:
