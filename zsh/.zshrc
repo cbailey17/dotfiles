@@ -108,10 +108,6 @@ export GOPATH=$HOME/Developer/go
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
 
-#Exports 
-export MARKETDATA_TOKEN="RDV0U3FPM2tBcWJIQlhjQThSd0NoWjY1Y1JrSHdhbUU4LWZXZ0NTWWF2bz0"
-export OPENAI_API_KEY="sk-proj-3CYc7ZWr7gLoFigBiNZrT3BlbkFJuJMuoQyaEzL4keKUcggR"
-
 # Spring configuration 
 # export SPRING_PROFILES_ACTIVE=looqlocalhost
 export SPRING_PROFILES_ACTIVE=mweblocalhost
@@ -124,15 +120,6 @@ export PG_PORT=5432
 export PG_HOST=localhost
 export PG_NAME=looqai
 
-export DBEE_CONNECTIONS='[
-    {
-        "name": "postgres",
-        "url": "postgres://cameronbailey:ACBacb0117!!@localhost:5432/looqai?sslmode=disable",
-        "type": "postgresql"
-    }
-]'
-
-# neofetch
 
 # Use vi keybindings in Zsh (switches to vi mode)
 bindkey -v
