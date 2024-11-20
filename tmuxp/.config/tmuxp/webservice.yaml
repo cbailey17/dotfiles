@@ -1,18 +1,17 @@
 session_name: looq-webservice
-start_directory: /Users/cameronbailey/looqai/webservice
+start_directory: /Users/cameronbailey/Developer/Looq/webservice
+shell_command_before: sdk use java 17.0.12-amzn
 windows:
-  - window_name: dev window
-    layout: main-horizontal
-    options:
-      main-pane-height: 77%
+  - window_name: Dev Window
     panes:
       - shell_command:
-          - nvim .
+          - nvim
+        focus: true
+  - window_name: Server Logs
+    panes:
       - shell_command:
-          - clear
           - /Users/cameronbailey/bin/maven_walkthrough.sh
         focus: true
-      - shell_command:
   - window_name: test window
     layout: main-horizontal
     options:

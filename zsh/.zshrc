@@ -29,13 +29,6 @@ HIST_IGNORE_ALL_DUPS=true
 setopt appendhistory
 
 zstyle :compinstall filename '/Users/cameronbailey/dotfiles/zsh/.zshrc'
-
-zle     -N             sesh-sessions
-bindkey -M emacs '\es' sesh-sessions
-bindkey -M vicmd '\es' sesh-sessions
-bindkey -M viins '\es' sesh-sessions
-
-
   
 EDITOR='nvim'
 
@@ -52,6 +45,24 @@ alias t="tmux"
 alias zz="z .."
 alias ns="npm run start"
 alias lg="lazygit"
+alias db="ssh -v -i ~/.ssh/device_api_ec2_keypair.pem ubuntu@ec2-3-238-38-140.compute-1.amazonaws.com  -o StrictHostKeyChecking=no"
+alias tk="tmux kill-session -t"
+alias kt='kill_current_tmux_session'
+alias lintjava="git diff --name-only looq-dev | grep .java | xargs -I {} sudo docker run --rm -v "${PWD}":/local vandmo/google-java-format google-java-format -i /local/{}"
+
+
+kill_current_tmux_session() {
+  local current_session
+  current_session=$(tmux display-message -p '#S')
+  if [ -n "$current_session" ]; then
+    tmux kill-session -t "$current_session"
+  else
+    echo "No tmux session found"
+  fi
+}
+zle -N kill_current_tmux_session
+
+
 
 # Define widgets
 zle -N insert-unambiguous-or-complete
@@ -89,6 +100,7 @@ function sesh-sessions() {
   }
 }
 
+
 export XDG_CONFIG_HOME="$HOME/.config"
  
 # Set GOPATH
@@ -120,50 +132,68 @@ export DBEE_CONNECTIONS='[
     }
 ]'
 
-neofetch
+# neofetch
 
-# Key bindings
+# Use vi keybindings in Zsh (switches to vi mode)
 bindkey -v
+
+# Clear the terminal screen when pressing Ctrl + E
 bindkey '^E' clear-screen
+
+# Accept autosuggestion when pressing Ctrl + I (Tab)
 bindkey '^I' autosuggest-accept
+
+# Execute the autosuggested command when pressing Ctrl + Space
 bindkey '^ ' autosuggest-execute
 
+# Open Neovim using fzf to select a file when pressing Ctrl + O (Emacs mode)
 bindkey -s "^O" "nvim \$(fzf)^M"
+
+# Open Neovim and edit the plugins file when pressing F12
 bindkey -s "^[[24~" "nvim ~/.config/nvim/lua/ace/plugins^M"
+
+# Open Neovim using fzf to select a file when pressing Ctrl + O (Vi insert mode)
 bindkey -s -M viins "^O" "nvim \$(fzf)^M"
+
+# Open Neovim using fzf to select a file when pressing Ctrl + O (Emacs mode)
 bindkey -s -M emacs "^O" "nvim \$(fzf)^M"
 
-# Bind F1 to "sdk use java 11.0.23-amzn && tmuxp load /Users/cameronbailey/dotfiles/tmuxp/.config/tmuxp/webservice.yaml"
+# Run a command to connect to a session (using sesh and gum) when pressing F3
+bindkey -s "^[OR" 'sesh connect "$(sesh list -i | gum filter --limit 1 --placeholder '\''Pick a sesh'\'' --prompt='\''⚡'\'')"^M'
+
+# Bind F1 to switch Java versions and load a Tmuxp configuration
 bindkey -s "^[OP" "sdk use java 11.0.23-amzn && tmuxp load /Users/cameronbailey/dotfiles/tmuxp/.config/tmuxp/webservice.yaml^M"
 
-# Bind F2 to "tmuxp load /Users/cameronbailey/dotfiles/tmuxp/.config/tmuxp/webapp.yaml"
+# Bind F2 to load a different Tmuxp configuration
 bindkey -s "^[OQ" "tmuxp load /Users/cameronbailey/dotfiles/tmuxp/.config/tmuxp/webapp.yaml^M"
 
-# Move backward by one word
+bindkey -s '^[[[D' "kill_current_tmux_session^M"
+
+# Move backward by one word when pressing Esc + h
 bindkey '\eh' backward-word
 
-# Move forward by one word
+# Move forward by one word when pressing Esc + l
 bindkey '\el' forward-word
 
-# Move to the beginning of the line
+# Move to the beginning of the line when pressing Ctrl + A
 bindkey '^a' beginning-of-line
 
-# Move to the end of the line
+# Move to the end of the line when pressing Ctrl + Z
 bindkey '^z' end-of-line
 
-# Delete to the beginning of the line
+# Delete to the beginning of the line when pressing Esc + H
 kill-to-beginning-of-line() {
   zle backward-kill-line
 }
 zle -N kill-to-beginning-of-line
-bindkey '^[H' kill-to-beginning-of-line
+bindkey '^A' kill-to-beginning-of-line
 
-# Delete to the end of the line
+# Delete to the end of the line when pressing Esc + L
 kill-to-end-of-line() {
   zle kill-line
 }
 zle -N kill-to-end-of-line
-bindkey '^[L' kill-to-end-of-line
+bindkey '^Z' kill-to-end-of-line
 
 # Source scripts and start up other
 eval "$(starship init zsh)"
@@ -185,5 +215,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/Developer/Software/prince-15.4.1-macos/lib/prince/bin:$PATH"
 
 export GPG_TTY=$(tty)

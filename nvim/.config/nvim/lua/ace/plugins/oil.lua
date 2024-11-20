@@ -38,7 +38,7 @@ return {
 				show_hidden = true,
 				natural_order = true,
 				is_always_hidden = function(name, _)
-					return name == ".." or name == ".git" or name == ".svn"
+					return name == ".." or name == ".DS_Store" or name == ".svn"
 				end,
 			},
 			preview_split = "right",

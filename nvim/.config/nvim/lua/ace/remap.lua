@@ -6,6 +6,10 @@ local opts = { noremap = true, silent = true }
 -- map save to leader wd to write docs
 keymap.set({ "n", "v" }, "<leader>wd", ":w<CR>", { desc = "Write document" })
 keymap.set({ "n", "v" }, "<leader>wq", ":wq<CR>", { desc = "Write and quit" })
+keymap.set({ "n", "v" }, "<leader>wa", ":wqa!<CR>", { desc = "Write and quit" })
+keymap.set({ "n", "v" }, "<leader>wx", ":exit!<CR>", { desc = "Write and quit" })
+
+keymap.set({ "n", "v" }, "<leader>vl", "0v$", { desc = "Select line" })
 
 -- Editor
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
@@ -19,6 +23,10 @@ keymap.set({ "n", "v" }, "<leader>p", [["+p]])
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
+
+-- Logsitter mappings
+keymap.set("n", "<leader>la", "<cmd>LogsitterClearAll<CR>", { desc = "Clear logsitter all" })
+keymap.set("n", "<leader>lb", "<cmd>LogsitterClearBuf<CR>", { desc = "Clear logsitter buffer" })
 
 -- window management
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically

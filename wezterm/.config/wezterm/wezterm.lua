@@ -18,6 +18,7 @@ return {
 	},
 	font_size = 15,
 	use_fancy_tab_bar = false,
+	enable_scroll_bar = false,
 	tab_bar_at_bottom = true,
 	window_decorations = "INTEGRATED_BUTTONS|RESIZE",
 	color_scheme = "Tokyo Night",
@@ -33,7 +34,7 @@ return {
 		"Noto Color Emoji",
 	}),
 
-	leader = { key = "`", mods = "", timeout_milliseconds = 2000 },
+	leader = { key = "a", mods = "CTRL|SHIFT", timeout_milliseconds = 2000 },
 	keys = {
 		{ key = "l", mods = "CMD|SHIFT", action = act.ActivateTabRelative(1) },
 		{ key = "h", mods = "CMD|SHIFT", action = act.ActivateTabRelative(-1) },
@@ -44,5 +45,14 @@ return {
 		{ key = "R", mods = "SHIFT|CTRL", action = act.ReloadConfiguration },
 		{ key = "X", mods = "CTRL|SHIFT", action = wezterm.action({ CloseCurrentPane = { confirm = true } }) },
 		{ key = "W", mods = "CTRL|SHIFT", action = wezterm.action({ CloseCurrentTab = { confirm = true } }) },
+		{
+			key = "k",
+			mods = "CTRL|SHIFT",
+			action = wezterm.action({
+				SpawnCommandInNewTab = {
+					args = { "zsh", "-c", "ls" },
+				},
+			}),
+		},
 	},
 }

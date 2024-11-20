@@ -90,9 +90,14 @@ return {
 				lualine_x = {
 					{ lazy_status.updates, cond = lazy_status.has_updates, color = { fg = "#ff9e64" } },
 				},
-				lualine_y = { "filetype", "progress" },
+				lualine_y = { require("recorder").displaySlots, "filetype", "progress" },
 				lualine_z = {
-					{ "location", separator = { right = "" }, left_padding = 2 },
+					{
+						require("recorder").recordingStatus,
+						"location",
+						separator = { right = "" },
+						left_padding = 2,
+					},
 				},
 			},
 			inactive_sections = {

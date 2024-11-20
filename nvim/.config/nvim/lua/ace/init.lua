@@ -53,3 +53,25 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
 	command = "if mode() != 'c' | silent! checktime | endif",
 	pattern = { "*" },
 })
+
+-- Set folded text color (background and foreground)
+vim.api.nvim_set_hl(0, "Folded", { fg = "#2cf9ed", bg = "#2E3440", bold = true })
+
+-- Set fold column color (background and foreground)
+vim.api.nvim_set_hl(0, "FoldColumn", { fg = "#2cf9ed", bg = "#3B4252" })
+
+vim.api.nvim_create_augroup("LogSitter", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+	group = "LogSitter",
+	pattern = "javascript,go,lua",
+	callback = function()
+		vim.keymap.set("n", "<leader>lc", function()
+			require("logsitter").log()
+		end)
+
+		-- experimental visual mode
+		vim.keymap.set("x", "<leader>lc", function()
+			require("logsitter").log_visual()
+		end)
+	end,
+})

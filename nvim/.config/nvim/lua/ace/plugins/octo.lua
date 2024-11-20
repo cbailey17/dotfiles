@@ -9,7 +9,9 @@ return {
 		require("octo").setup()
 	end,
 	keys = {
-		{ "<leader>pr", mode = { "n", "x", "o" }, "<cmd>Octo pr list<CR>", desc = "Open PRs" },
+		{ "<leader>pr", mode = { "n", "x", "o" }, "<cmd>Octo pr list<CR>", desc = "Search PRs" },
+		{ "<leader>pc", mode = { "n", "x", "o" }, "<cmd>Octo pr create<CR>", desc = "Create PR" },
+		{ "<leader>pl", mode = { "n", "x", "o" }, "<cmd>Octo pr checks<CR>", desc = "Check PR linter" },
 		-- { "S",     mode = { "n", "x", "o" }, function() require("octo").pr() end,                 desc = "Pull Request" },
 		-- { "r",     mode = "o",               function() require("octo").review() end,              desc = "Review" },
 		-- { "R",     mode = { "o", "x" },      function() require("octo").review_thread() end,      desc = "Review Thread" },

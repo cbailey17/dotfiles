@@ -90,6 +90,7 @@ return {
 					"go/",
 					".local",
 					".cache",
+					"public/", -- temp
 				},
 				mappings = {
 					i = {

@@ -7,7 +7,6 @@ return {
 		end,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter", -- optional
-			-- "nvim-tree/nvim-web-devicons", -- optional
 			"echasnovski/mini.icons",
 		},
 	},
@@ -176,6 +175,7 @@ return {
 				["bashls"] = false,
 				-- ["shfmt"] = true,
 			}
+			lspconfig.emmet_language_server.setup({})
 
 			lspconfig.emmet_ls.setup({
 				-- on_attach = on_attach,
@@ -217,11 +217,11 @@ return {
 					},
 				},
 			})
-			lspconfig.sqls.setup({
-				on_attach = function(client, bufnr)
-					require("sqls").on_attach(client, bufnr)
-				end,
-			})
+			-- lspconfig.sqls.setup({
+			-- 	on_attach = function(client, bufnr)
+			-- 		require("sqls").on_attach(client, bufnr)
+			-- 	end,
+			-- })
 
 			local tailwind_attach = function(client, bufnr)
 				-- other stuff --

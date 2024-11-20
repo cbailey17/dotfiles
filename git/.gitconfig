@@ -4,9 +4,9 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 [user]
-	name = CameronBailey
+	name = cbailey17
   username = looqingGood
-	email = cbailey@looq.ai
+	email = a.cameronbailey@gmail.com
   signingkey = 70343460505C5B1E
 [merge]
 	tool = nvimdiff
@@ -46,4 +46,4 @@
 [tag]
 	gpgSign = true
 [rerere]
-  enabled = true
+  enabled = false

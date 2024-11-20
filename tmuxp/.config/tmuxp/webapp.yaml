@@ -1,15 +1,17 @@
 session_name: looq-webapp
-start_directory: /Users/cameronbailey/looq/webapp
+start_directory: /Users/cameronbailey/Developer/Looq/webapp
+shell_command_before: nvm use 16.17.1
 windows:
   - window_name: dev window
     layout: main-horizontal
-    options:
-      main-pane-height: 77%
     panes:
       - shell_command:
-          - nvim .
+          - nvim
         focus: true
-      - shell_command: npm run start
+  - window_name: npm run log
+    panes:
+      - shell_command:
+          - npm run start
   - window_name: api window
     layout: main-horizontal
     options:
@@ -17,4 +19,15 @@ windows:
     panes:
       - shell_command:
           - cd ~/Developer/rest-collections && nvim .
+  - window_name: lazygit
+    panes:
       - shell_command:
+          - lazygit
+  - window_name: database
+    panes:
+      - shell_command:
+          - nvim -c "lua require('dbee').toggle()"
+  - window_name: EC2 DB Manager
+    panes:
+      - shell_command:
+          - ssh -v -i ~/.ssh/device_api_ec2_keypair.pem ubuntu@ec2-3-238-38-140.compute-1.amazonaws.com  -o StrictHostKeyChecking=no
