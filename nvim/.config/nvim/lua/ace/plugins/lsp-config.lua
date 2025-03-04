@@ -1,5 +1,10 @@
 return {
 	{
+		"creativenull/efmls-configs-nvim",
+		-- version = "v1.x.x", -- version is optional, but recommended
+		dependencies = { "neovim/nvim-lspconfig" },
+	},
+	{
 		"nvimdev/lspsaga.nvim",
 		event = "LspAttach",
 		config = function()
@@ -30,11 +35,12 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
+					"solidity_ls",
 					"lua_ls",
 					"pyright",
 					"jdtls",
 					"gopls",
-					"tsserver",
+					"ts_ls",
 				},
 			})
 		end,
@@ -43,6 +49,7 @@ return {
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
+			"creativenull/efmls-configs-nvim",
 			"hrsh7th/cmp-nvim-lsp",
 			{ "antosha417/nvim-lsp-file-operations", config = true },
 			{ "folke/neodev.nvim", opts = {} },
@@ -56,7 +63,7 @@ return {
 						return require("lspconfig.util").root_pattern(".git")(...)
 					end,
 				},
-				tsserver = {
+				ts_ls = {
 					root_dir = function(...)
 						return require("lspconfig.util").root_pattern(".git")(...)
 					end,
@@ -149,6 +156,7 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 			local cmp_nvim_lsp = require("cmp_nvim_lsp")
+			-- local on_attach_sol = require("util.lsp").on_attach
 			-- require("spring_boot").init_lsp_commands()
 			local keymap = vim.keymap.set
 			require("lspconfig.ui.windows").default_options.border = "rounded"
@@ -163,11 +171,12 @@ return {
 			-- they're allowed to format buffers
 			local servers_filters = {
 				["html"] = false, -- we use prettier
-				["tsserver"] = false, -- we use prettier
+				["ts_ls"] = false, -- we use prettier
 				["eslint"] = false, -- not for formatting
+				["solidity_ls"] = false,
 				["cssls"] = false, -- we use prettier
 				["tailwindcss"] = true, -- shouldn't clash with prettier idk
-				["ruff_lsp"] = true,
+				["ruff"] = true,
 				["pyright"] = false,
 				["rust_analyzer"] = true,
 				["lua_ls"] = false, -- we use stylua
@@ -175,30 +184,88 @@ return {
 				["bashls"] = false,
 				-- ["shfmt"] = true,
 			}
-			lspconfig.emmet_language_server.setup({})
 
-			lspconfig.emmet_ls.setup({
-				-- on_attach = on_attach,
-				capabilities = capabilities,
+			local solhint = require("efmls-configs.linters.solhint")
+			local prettier_d = require("efmls-configs.formatters.prettier_d")
+
+			-- configure efm server
+			lspconfig.efm.setup({
 				filetypes = {
-					"css",
-					"html",
-					"javascript",
-					"javascriptreact",
-					"typescriptreact",
-					"less",
-					"sass",
-					"scss",
+					"solidity",
+					-- "lua",
+					-- "python",
+					"json",
+					-- "jsonc",
+					-- "sh",
+					-- "javascript",
+					-- "javascriptreact",
+					-- "typescript",
+					-- "typescriptreact",
+					-- "svelte",
+					-- "vue",
+					-- "markdown",
+					-- "docker",
+					-- "html",
+					-- "css",
+					-- "c",
+					-- "cpp",
 				},
 				init_options = {
-					html = {
-						options = {
-							-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-							["bem.enabled"] = true,
-						},
+					documentFormatting = true,
+					documentRangeFormatting = true,
+					hover = true,
+					documentSymbol = true,
+					codeAction = true,
+					completion = true,
+				},
+				settings = {
+					languages = {
+						solidity = { solhint, prettier_d },
+						-- lua = { luacheck, stylua },
+						-- python = { flake8, black },
+						-- typescript = { eslint, prettier_d },
+						-- json = { eslint, fixjson },
+						-- jsonc = { eslint, fixjson },
+						-- sh = { shellcheck, shfmt },
+						-- javascript = { eslint, prettier_d },
+						-- javascriptreact = { eslint, prettier_d },
+						-- typescriptreact = { eslint, prettier_d },
+						-- svelte = { eslint, prettier_d },
+						-- vue = { eslint, prettier_d },
+						-- markdown = { prettier_d },
+						-- docker = { hadolint, prettier_d },
+						-- html = { prettier_d },
+						-- css = { prettier_d },
+						-- c = { clangformat, cpplint },
+						-- cpp = { clangformat, cpplint },
 					},
 				},
 			})
+
+			-- lspconfig.emmet_language_server.setup({})
+			--
+			-- lspconfig.emmet_ls.setup({
+			-- 	-- on_attach = on_attach,
+			-- 	capabilities = capabilities,
+			-- 	filetypes = {
+			-- 		"css",
+			-- 		"html",
+			-- 		"javascript",
+			-- 		"javascriptreact",
+			-- 		"typescriptreact",
+			-- 		"less",
+			-- 		"sass",
+			-- 		"scss",
+			-- 	},
+			-- 	init_options = {
+			-- 		html = {
+			-- 			options = {
+			-- 				-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+			-- 				["bem.enabled"] = true,
+			-- 			},
+			-- 		},
+			-- 	},
+			-- })
 			lspconfig.jsonls.setup({
 				settings = {
 					json = {
@@ -245,7 +312,7 @@ return {
 
 			-- lsp keymaps and auto formatting
 			local on_attach = function(client, bufnr)
-				if client.name == "ruff_lsp" then
+				if client.name == "ruff" then
 					client.server_capabilities.hoverProvider = false
 				end
 				if client.supports_method("textDocument/formatting") then
@@ -272,6 +339,14 @@ return {
 				keymap("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 				keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 			end
+
+			-- solidity
+			lspconfig.solidity_ls.setup({
+				capabilities = capabilities,
+				on_attach = on_attach,
+				filetypes = { "solidity" },
+				root_dir = lspconfig.util.root_pattern("hardhat.config.*", ".git"),
+			})
 
 			-- used to ensure hover displays with borders
 			local handlers = {

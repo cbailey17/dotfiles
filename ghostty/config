@@ -1,0 +1,99 @@
+# Ghostty Configuration - Equivalent to WezTerm
+
+[window]
+# Set window padding
+padding_x = 10
+padding_y = 10
+
+# Enable transparency and blur
+opacity = 0.95
+blur = 10.0
+
+# Enable decorations and dynamic title updates
+decorations = "full"
+dynamic_title = true
+
+# Set initial dimensions (WezTerm defines in cells, Ghostty in pixels)
+size = { width = 1280, height = 720 }
+
+[font]
+# Use the correct font
+family = "ComicShannsMono Nerd Font"
+size = 14.0
+
+[font.bold]
+family = "ComicShannsMono Nerd Font"
+weight = "Bold"
+
+[font.italic]
+family = "ComicShannsMono Nerd Font"
+style = "Italic"
+
+# Cursor appearance
+[cursor]
+style = "block"
+blink = true
+
+# Colorscheme (matching WezTerm style)
+[colors]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+cursor = "#f5e0dc"
+
+[colors.normal]
+black   = "#45475a"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#cba6f7"
+cyan    = "#94e2d5"
+white   = "#bac2de"
+
+[colors.bright]
+black   = "#585b70"
+red     = "#f38ba8"
+green   = "#a6e3a1"
+yellow  = "#f9e2af"
+blue    = "#89b4fa"
+magenta = "#cba6f7"
+cyan    = "#94e2d5"
+white   = "#a6adc8"
+
+# Shell settings (similar to WezTerm `default_prog`)
+[shell]
+program = "/bin/zsh"
+args = ["-l"]
+
+# Scrollback history
+[scrollback]
+lines = 5000
+
+# Enable Wayland support
+[wayland]
+enable = true
+
+# Copy-on-select and mouse behavior
+[input]
+copy_on_select = true
+paste_after_copy = true
+
+# Keybindings similar to WezTerm
+[keyboard]
+bindings = [
+  { key = "c", mods = "CTRL|SHIFT", action = "Copy" },
+  { key = "v", mods = "CTRL|SHIFT", action = "Paste" },
+  { key = "Enter", mods = "ALT", action = "ToggleFullscreen" },
+  { key = "q", mods = "CTRL|SHIFT", action = "Quit" },
+  { key = "PageUp", mods = "CTRL", action = "ScrollUp" },
+  { key = "PageDown", mods = "CTRL", action = "ScrollDown" }
+]
+
+# Pane and Tab Keybindings similar to WezTerm
+[keyboard.bindings]
+"CTRL|SHIFT|T" = { action = "NewTab" }
+"CTRL|SHIFT|D" = { action = "SplitVertical" }
+"CTRL|SHIFT|R" = { action = "SplitHorizontal" }
+"CTRL|SHIFT|W" = { action = "CloseTab" }
+"CTRL|SHIFT|LEFT" = { action = "PreviousTab" }
+"CTRL|SHIFT|RIGHT" = { action = "NextTab" }

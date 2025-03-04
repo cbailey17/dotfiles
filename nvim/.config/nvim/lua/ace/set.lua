@@ -11,6 +11,7 @@ vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 
+vim.lsp.set_log_level("debug")
 vim.opt.ignorecase = true
 
 vim.opt.swapfile = false

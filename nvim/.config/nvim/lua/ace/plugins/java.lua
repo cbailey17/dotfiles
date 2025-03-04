@@ -14,12 +14,12 @@ return {
 			-- Get workspace directory for each project based on name
 			local root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew", "pom.xml" })
 			local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-			local workspace_dir = "/Users/cameronbailey/looq" .. root_dir
-			-- local workspace_dir = "/home/acbailey/Developer/java" -- .. project_name
+			-- local workspace_dir = "/Users/cameronbailey/looq" .. root_dir
+			local workspace_dir = "/home/acbailey/Developer" .. root_dir
 
 			-- Set proper Java executable
 			-- local java_cmd = "/usr/lib/jvm/java-21-openjdk/bin/java"
-			local java_cmd = "/Users/cameronbailey/.sdkman/candidates/java/21.0.3-tem/bin/java"
+			local java_cmd = "/home/acbailey/.sdkman/candidates/java/current/bin/java"
 			--
 			-- Mason registry and language server path from mason
 			local mason_registry = require("mason-registry")
@@ -117,13 +117,13 @@ return {
 				settings = {
 					java = {
 						format = {
-							settings = {
-								-- Use Google Java style guidelines for formatting
-								-- To use, make sure to download the file from https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
-								-- and place it in the ~/.local/share/eclipse directory
-								url = "/.local/share/eclipse/eclipse-java-google-style.xml",
-								profile = "GoogleStyle",
-							},
+							-- settings = {
+							-- 	-- Use Google Java style guidelines for formatting
+							-- 	-- To use, make sure to download the file from https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
+							-- 	-- and place it in the ~/.local/share/eclipse directory
+							-- 	url = "/.local/share/eclipse/eclipse-java-google-style.xml",
+							-- 	profile = "GoogleStyle",
+							-- },
 						},
 						-- jdt = {
 						--   ls = {

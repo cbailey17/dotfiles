@@ -81,6 +81,9 @@ return {
 				file_ignore_patterns = {
 					".git/",
 					"node_modules/",
+					"*.class",
+					"bin/",
+					"build/",
 					"yarn.lock",
 					"package-lock.json",
 					"undodir/",

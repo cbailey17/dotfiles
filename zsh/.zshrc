@@ -62,6 +62,7 @@ kill_current_tmux_session() {
 }
 zle -N kill_current_tmux_session
 
+eval "$(luarocks path --bin)"
 
 
 # Define widgets
@@ -110,7 +111,7 @@ export GO111MODULE=on
 
 # Spring configuration 
 # export SPRING_PROFILES_ACTIVE=looqlocalhost
-export SPRING_PROFILES_ACTIVE=mweblocalhost
+# export SPRING_PROFILES_ACTIVE=mweblocalhost
 # export SPRING_PROFILES_ACTIVE=looqdev
 # export SPRING_PROFILES_ACTIVE=looqprod
 
@@ -186,11 +187,11 @@ bindkey '^Z' kill-to-end-of-line
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
-source $(brew --prefix nvm)/nvm.sh
-source /Users/cameronbailey/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# source $(brew --prefix nvm)/nvm.sh
+# source /Users/cameronbailey/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
-export HOMEBREW_PREFIX=/opt/homebrew
-source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# export HOMEBREW_PREFIX=/opt/homebrew
+# source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -200,6 +201,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [ -s "/Users/cameronbailey/.bun/_bun" ] && source "/Users/cameronbailey/.bun/_bun"
 
 # bun
+export OPENAI_API_KEY="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"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/Developer/Software/prince-15.4.1-macos/lib/prince/bin:$PATH"
