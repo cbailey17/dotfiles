@@ -224,6 +224,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [ -s "/Users/cameronbailey/.bun/_bun" ] && source "/Users/cameronbailey/.bun/_bun"
 
 # bun
+
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/Developer/Software/prince-15.4.1-macos/lib/prince/bin:$PATH"
