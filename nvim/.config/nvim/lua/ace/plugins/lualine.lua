@@ -88,6 +88,7 @@ return {
 					{ "buffers", mode = 4, symbols = { alternate_file = "󰑱 " } },
 				},
 				lualine_x = {
+					{ require("mcphub.extensions.lualine") },
 					{ lazy_status.updates, cond = lazy_status.has_updates, color = { fg = "#ff9e64" } },
 				},
 				lualine_y = { require("recorder").displaySlots, "filetype", "progress" },

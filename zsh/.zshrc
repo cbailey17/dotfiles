@@ -192,6 +192,29 @@ eval "$(zoxide init zsh)"
 source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 # export HOMEBREW_PREFIX=/opt/homebrew
 # source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Automatically load Node version from .nvmrc if present
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(cat "${nvmrc_path}")
+    if [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -201,9 +224,9 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [ -s "/Users/cameronbailey/.bun/_bun" ] && source "/Users/cameronbailey/.bun/_bun"
 
 # bun
-export OPENAI_API_KEY="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"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/Developer/Software/prince-15.4.1-macos/lib/prince/bin:$PATH"
 
 export GPG_TTY=$(tty)
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

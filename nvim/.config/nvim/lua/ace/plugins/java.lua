@@ -11,16 +11,13 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local extendedClientCapabilities = jdtls.extendedClientCapabilities
 
-			-- Get workspace directory for each project based on name
 			local root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew", "pom.xml" })
-			local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-			-- local workspace_dir = "/Users/cameronbailey/looq" .. root_dir
-			local workspace_dir = "/home/acbailey/Developer" .. root_dir
+			local project_name = vim.fn.fnamemodify(root_dir, ":t")
+			local workspace_dir = vim.fn.stdpath("data") .. "/jdtls/workspace/" .. project_name
 
 			-- Set proper Java executable
-			-- local java_cmd = "/usr/lib/jvm/java-21-openjdk/bin/java"
 			local java_cmd = "/home/acbailey/.sdkman/candidates/java/current/bin/java"
-			--
+
 			-- Mason registry and language server path from mason
 			local mason_registry = require("mason-registry")
 			local jdtls_path = mason_registry.get_package("jdtls"):get_install_path()
@@ -46,6 +43,21 @@ return {
 				vim.cmd("term " .. get_test_runner(class_name, debug))
 			end
 
+			local function get_spring_boot_runner_gradle(profile, debug)
+				local debug_param = ""
+				if debug then
+					debug_param =
+						'-Dspring-boot.run.jvmArguments="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005"'
+				end
+
+				local profile_param = ""
+				if profile then
+					profile_param = "-Dspring-boot.run.profiles=" .. profile
+				end
+
+				return string.format("./gradlew bootRun %s %s", profile_param, debug_param)
+			end
+
 			local function get_spring_boot_runner(profile, debug)
 				local debug_param = ""
 				if debug then
@@ -62,7 +74,11 @@ return {
 			end
 
 			local function run_spring_boot(debug)
-				vim.cmd("tabnew | term " .. get_spring_boot_runner(method_name, debug))
+				vim.cmd("tabnew | term " .. get_spring_boot_runner(nil, debug))
+			end
+
+			local function run_spring_boot_gradle(debug)
+				vim.cmd("tabnew | term " .. get_spring_boot_runner_gradle(nil, debug))
 			end
 
 			-- Get debugging and testing packages ready
@@ -80,11 +96,11 @@ return {
 					"\n"
 				)
 			)
+
 			-- Main configuration table
 			local config = {
 				cmd = {
 					java_cmd,
-					-- "java",
 
 					"-Declipse.application=org.eclipse.jdt.ls.core.id1",
 					"-Dosgi.bundles.defaultStartLevel=4",
@@ -118,17 +134,17 @@ return {
 					java = {
 						format = {
 							-- settings = {
-							-- 	-- Use Google Java style guidelines for formatting
-							-- 	-- To use, make sure to download the file from https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
-							-- 	-- and place it in the ~/.local/share/eclipse directory
-							-- 	url = "/.local/share/eclipse/eclipse-java-google-style.xml",
-							-- 	profile = "GoogleStyle",
+							-- -- Use Google Java style guidelines for formatting
+							-- -- To use, make sure to download the file from https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
+							-- -- and place it in the ~/.local/share/eclipse directory
+							-- url = "/.local/share/eclipse/eclipse-java-google-style.xml",
+							-- profile = "GoogleStyle",
 							-- },
 						},
 						-- jdt = {
-						--   ls = {
-						--     vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m"
-						--   }
+						-- ls = {
+						-- vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m"
+						-- }
 						-- },
 						eclipse = {
 							downloadSources = true,
@@ -136,17 +152,9 @@ return {
 						configuration = {
 							updateBuildConfiguration = "interactive",
 							runtimes = {
-								-- {
-								--   name = "JavaSE-11",
-								--   path = "/usr/lib/jvm/java-11-openjdk/",
-								-- },
-								{
-									name = "JavaSE-11",
-									path = "/Users/cameronbailey/.sdkman/candidates/java/11.0.23-amzn/",
-								},
 								{
 									name = "JavaSE-21",
-									path = "/Users/cameronbailey/.sdkman/candidates/java/21.0.3-tem/",
+									path = "/Users/alex.bailey/.sdkman/candidates/java/21.0.7-amzn",
 								},
 							},
 						},
@@ -243,6 +251,14 @@ return {
 							run_spring_boot(true)
 						end, { desc = "Debug Maven project" })
 
+						vim.keymap.set("n", "<leader>gp", function()
+							run_spring_boot_gradle()
+						end, { desc = "Run Gradle Spring Boot app" })
+
+						vim.keymap.set("n", "<leader>gd", function()
+							run_spring_boot_gradle(true)
+						end, { desc = "Debug Gradle Spring Boot app" })
+
 						map("n", "<leader>Co", jdtls.organize_imports, "Organize Imports")
 						map("n", "<leader>Cv", jdtls.extract_variable, "Extract Variable")
 						map("n", "<leader>Cc", jdtls.extract_constant, "Extract Constant")
@@ -256,13 +272,6 @@ return {
 							"Extract Method"
 						)
 
-						-- require("which-key").add({
-						-- 	["<leader>de"] = { "<cmd>DapContinue<cr>", "[JDLTS] Show debug configurations" },
-						-- 	["<leader>ro"] = {
-						-- 		"<cmd>lua require'jdtls'.organize_imports()<cr>",
-						-- 		"[JDLTS] Organize imports",
-						-- 	},
-						-- })
 						---@diagnostic disable-next-line: missing-fields
 						jdtls.setup_dap({ hotcodereplace = "auto" })
 						-- Auto-detect main and setup dap config
@@ -275,34 +284,23 @@ return {
 				end,
 			}
 			jdtls.start_or_attach(config)
+
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "java",
+				callback = function()
+					local attached = false
+					for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+						if client.name == "jdtls" then
+							attached = true
+							break
+						end
+					end
+
+					if not attached then
+						require("jdtls").start_or_attach(config)
+					end
+				end,
+			})
 		end,
 	},
 }
-
--- local on_attach = function(client, bufnr)
---   -- Regular Neovim LSP client keymappings
---   local bufopts = { noremap=true, silent=true, buffer=bufnr }
---   nnoremap('gD', vim.lsp.buf.declaration, bufopts, "Go to declaration")
---   nnoremap('gd', vim.lsp.buf.definition, bufopts, "Go to definition")
---   nnoremap('gi', vim.lsp.buf.implementation, bufopts, "Go to implementation")
---   nnoremap('K', vim.lsp.buf.hover, bufopts, "Hover text")
---   nnoremap('<C-k>', vim.lsp.buf.signature_help, bufopts, "Show signature")
---   nnoremap('<space>wa', vim.lsp.buf.add_workspace_folder, bufopts, "Add workspace folder")
---   nnoremap('<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts, "Remove workspace folder")
---   nnoremap('<space>wl', function()
---     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
---   end, bufopts, "List workspace folders")
---   nnoremap('<space>D', vim.lsp.buf.type_definition, bufopts, "Go to type definition")
---   nnoremap('<space>rn', vim.lsp.buf.rename, bufopts, "Rename")
---   nnoremap('<space>ca', vim.lsp.buf.code_action, bufopts, "Code actions")
---   vim.keymap.set('v', "<space>ca", "<ESC><CMD>lua vim.lsp.buf.range_code_action()<CR>",
---     { noremap=true, silent=true, buffer=bufnr, desc = "Code actions" })
---   nnoremap('<space>f', function() vim.lsp.buf.format { async = true } end, bufopts, "Format file")
---
---   -- Java extensions provided by jdtls
---   nnoremap("<C-o>", jdtls.organize_imports, bufopts, "Organize imports")
---   nnoremap("<space>ev", jdtls.extract_variable, bufopts, "Extract variable")
---   nnoremap("<space>ec", jdtls.extract_constant, bufopts, "Extract constant")
---   vim.keymap.set('v', "<space>em", [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]],
---     { noremap=true, silent=true, buffer=bufnr, desc = "Extract method" })
--- end

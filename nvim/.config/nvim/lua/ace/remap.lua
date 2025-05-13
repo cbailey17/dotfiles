@@ -41,6 +41,8 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
 
+keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", { desc = "Dismiss noice message" })
+
 -- Buffer management
 keymap.set("n", "<leader>bn", ":bn<cr>", { desc = "Go to next buffer" })
 keymap.set("n", "<leader>bp", ":bp<cr>", { desc = "Go to previous buffer" })

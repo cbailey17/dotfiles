@@ -1,5 +1,7 @@
 vim.opt.guicursor = ""
 
+vim.g.mcphub_auto_approve = true
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 

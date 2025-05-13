@@ -1,0 +1,76 @@
+{
+  "nativeMCPServers": [],
+  "mcpServers": {
+    "codegen_openai": {
+      "args": [
+        "mcp-server-codegen"
+      ],
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+      },
+      "autostart": true,
+      "disabled": false,
+      "command": "uvx"
+    },
+    "stripe": {
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "mcp/stripe",
+        "--tools=all"
+      ],
+      "env": {
+        "STRIPE_API_KEY": "${STRIPE_SECRET_KEY}"
+      },
+      "autostart": false,
+      "disabled": true,
+      "command": "docker"
+    },
+    "postgres": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://localhost/mydb"
+      ]
+    },
+    "brave_search": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-brave-search"
+      ],
+      "env": {
+        "BRAVE_API_KEY": "${BRAVE_SEARCH_API_KEY}"
+      },
+      "autostart": false,
+      "disabled": false,
+      "command": "npx"
+    },
+    "todoist_tasks": {
+      "args": [
+        "-y",
+        "@abhiz123/todoist-mcp-server"
+      ],
+      "env": {
+        "TODOIST_API_TOKEN": "${TODOIST_API_TOKEN}"
+      },
+      "autostart": false,
+      "disabled": false,
+      "command": "npx"
+    },
+    "github.com/modelcontextprotocol/servers/tree/main/src/git": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-git"
+      ]
+    },
+    "github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
+    }
+  }
+}

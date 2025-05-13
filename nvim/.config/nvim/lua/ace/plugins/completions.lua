@@ -24,16 +24,6 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		dependencies = {
-			{
-				"MattiasMTS/cmp-dbee",
-				dependencies = {
-					{ "kndndrj/nvim-dbee" },
-				},
-				-- ft = "sql", -- optional but good to have
-				opts = {}, -- needed
-			},
-		},
 		config = function()
 			local cmp = require("cmp")
 			require("luasnip.loaders.from_vscode").lazy_load()
@@ -129,7 +119,7 @@ return {
 					{ name = "luasnip" }, -- For luasnip users.
 					{ name = "tmux" },
 					{ name = "copilot" },
-					{ name = "cmp-dbee" },
+					{ name = "codecompanion" },
 				}, {
 					{ name = "buffer" },
 				}),
